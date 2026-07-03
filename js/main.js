@@ -337,13 +337,13 @@ const TentCTA = {
     document.querySelectorAll('.tent-card__cta-btn[data-tent]').forEach(btn => {
       btn.addEventListener('click', () => {
         const tentType = btn.dataset.tent;
-        const select   = document.getElementById('tent-type');
+        const radio    = document.querySelector(`input[name="tent-type-radio"][value="${tentType}"]`);
         const section  = document.getElementById('booking');
 
-        if (select && tentType) {
-          select.value = tentType;
+        if (radio && tentType) {
+          radio.checked = true;
           // Fire change so booking.js can refresh the calendar
-          select.dispatchEvent(new Event('change', { bubbles: true }));
+          radio.dispatchEvent(new Event('change', { bubbles: true }));
         }
 
         if (section) {
@@ -355,16 +355,72 @@ const TentCTA = {
 };
 
 /* ============================================================
+   Image Loader
+   Reads window.IMAGES (from js/images.js) and applies URLs
+   to all elements with data-img-key attributes, then builds
+   the gallery grid dynamically.
+   ============================================================ */
+const Images = {
+  /** Resolve a dot-notation key like "tents.traditional" into the URL string. */
+  get(key) {
+    const imgs = window.IMAGES;
+    if (!imgs) return '';
+    return key.split('.').reduce((obj, k) => (obj && obj[k] !== undefined ? obj[k] : ''), imgs) || '';
+  },
+
+  /** Apply URLs to <img src> and background-image on elements with data-img-key. */
+  applyStatic() {
+    document.querySelectorAll('[data-img-key]').forEach(el => {
+      const key = el.getAttribute('data-img-key');
+      const url = this.get(key);
+      if (!url) return;
+      if (el.tagName === 'IMG') {
+        el.src = url;
+      } else {
+        el.style.backgroundImage = `url('${url}')`;
+      }
+    });
+  },
+
+  /** Build gallery grid from window.IMAGES.gallery array. */
+  buildGallery() {
+    const grid = document.getElementById('gallery-grid');
+    const imgs = window.IMAGES && window.IMAGES.gallery;
+    if (!grid || !imgs || !imgs.length) return;
+
+    grid.innerHTML = imgs.map(item => `
+      <figure class="gallery-item animate-on-scroll" role="listitem">
+        <img
+          src="${item.thumb}"
+          data-full="${item.full}"
+          alt="${item.alt}"
+          loading="lazy"
+          width="600"
+        />
+        <div class="gallery-item__overlay">
+          <span class="gallery-item__caption">${item.caption}</span>
+        </div>
+      </figure>`).join('');
+  },
+
+  init() {
+    this.applyStatic();
+    this.buildGallery();
+  }
+};
+
+/* ============================================================
    Init
    ============================================================ */
 function init() {
+  Images.init();      // must run before Lightbox (gallery items must exist)
   Lang.init();
   Navbar.init();
   MobileMenu.init();
   SmoothScroll.init();
   Parallax.init();
   ScrollAnimations.init();
-  Lightbox.init();
+  Lightbox.init();    // re-indexes gallery items after Images.buildGallery()
   ScrollSpy.init();
   TentCTA.init();
 

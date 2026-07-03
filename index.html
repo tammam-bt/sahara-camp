@@ -11,28 +11,26 @@
   <meta name="keywords" content="Sahara camp Tunisia, desert camp Douz, Tembaine camp, Berber tent Tunisia, glamping Sahara, Kebili desert, Tunisia tourism" />
   <meta name="author" content="Sahara Camp" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://sahara-camp-camp.com/" />
+  <link rel="canonical" href="https://sahara-camp.com/" />
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sahara-camp-camp.com/" />
+  <meta property="og:url" content="https://sahara-camp.com/" />
   <meta property="og:title" content="Sahara Camp — Sahara Desert Camp in Tunisia" />
   <meta property="og:description" content="Sleep under the stars in authentic Berber tents or luxury glamping tents at Sahara Camp, Tembaine, Douz, Tunisia." />
-  <meta property="og:image" content="https://sahara-camp-camp.com/images/og-image.jpg" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1613169620329-6785c004d900?q=85&w=1920&auto=format&fit=crop" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1280" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sahara Camp — Sahara Desert Camp in Tunisia" />
   <meta name="twitter:description" content="Sleep under the stars in authentic Berber tents or luxury glamping tents at Sahara Camp." />
-  <meta name="twitter:image" content="https://sahara-camp-camp.com/images/og-image.jpg" />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1613169620329-6785c004d900?q=85&w=1920&auto=format&fit=crop" />
 
-  <!-- Hreflang alternates -->
-  <link rel="alternate" hreflang="en" href="https://sahara-camp-camp.com/" />
-  <link rel="alternate" hreflang="fr" href="https://sahara-camp-camp.com/" />
-  <link rel="alternate" hreflang="de" href="https://sahara-camp-camp.com/" />
-  <link rel="alternate" hreflang="ru" href="https://sahara-camp-camp.com/" />
-  <link rel="alternate" hreflang="ar" href="https://sahara-camp-camp.com/" />
+  <!-- Hreflang — single URL with client-side language switching -->
+  <link rel="alternate" hreflang="x-default" href="https://sahara-camp.com/" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏕️</text></svg>" />
@@ -56,8 +54,9 @@
     "@type": "LodgingBusiness",
     "name": "Sahara Camp",
     "description": "Authentic Sahara desert camp offering traditional Berber tents and luxury glamping in Tembaine, Douz, Tunisia.",
-    "url": "https://sahara-camp-camp.com",
+    "url": "https://sahara-camp.com",
     "telephone": "+21693290920",
+    "image": "https://images.unsplash.com/photo-1613169620329-6785c004d900?q=85&w=1920&auto=format&fit=crop",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Tembaine Dunes",
@@ -164,10 +163,8 @@
        ============================================================ -->
   <section id="hero" aria-label="Hero">
 
-    <!-- Background (replace with real image via inline style or img tag) -->
-    <div class="hero__bg" id="hero-bg"
-         style="background-image: url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1920&q=80');">
-    </div>
+    <!-- Background image — URL controlled by js/images.js → hero key -->
+    <div class="hero__bg" id="hero-bg" data-img-key="hero"></div>
     <div class="hero__grain" aria-hidden="true"></div>
     <div class="hero__overlay" aria-hidden="true"></div>
 
@@ -210,7 +207,8 @@
         <!-- Image -->
         <div class="about__image-wrap animate-on-scroll">
           <img
-            src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80"
+            data-img-key="about"
+            src=""
             alt="Sahara Camp — traditional Berber tents in the Sahara dunes"
             class="about__image"
             loading="lazy"
@@ -288,7 +286,8 @@
         <article class="tent-card animate-on-scroll" aria-labelledby="tent-traditional-title">
           <div class="tent-card__image">
             <img
-              src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?w=800&q=80"
+              data-img-key="tents.traditional"
+              src=""
               alt="Traditional Berber tent interior with handwoven fabrics and lanterns"
               loading="lazy"
               width="800"
@@ -335,7 +334,8 @@
         <article class="tent-card animate-on-scroll" aria-labelledby="tent-glamping-title">
           <div class="tent-card__image">
             <img
-              src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80"
+              data-img-key="tents.glamping"
+              src=""
               alt="Luxury glamping tent with soft furnishings and desert view"
               loading="lazy"
               width="800"
@@ -508,99 +508,8 @@
         <p data-i18n="gallery.subtitle">Moments of light, sand, and serenity captured at Sahara Camp.</p>
       </div>
 
-      <div class="gallery-grid" role="list" aria-label="Photo gallery">
-
-        <figure class="gallery-item" role="listitem">
-          <img
-            src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=75"
-            data-full="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1600&q=90"
-            alt="Golden Sahara dunes at sunset"
-            loading="lazy" width="600" height="800"
-          />
-          <div class="gallery-item__overlay"><span class="gallery-item__caption">Golden Hour Dunes</span></div>
-        </figure>
-
-        <figure class="gallery-item" role="listitem">
-          <img
-            src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=75"
-            data-full="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1600&q=90"
-            alt="Traditional Berber camp tent"
-            loading="lazy" width="600" height="400"
-          />
-          <div class="gallery-item__overlay"><span class="gallery-item__caption">Berber Tent</span></div>
-        </figure>
-
-        <figure class="gallery-item" role="listitem">
-          <img
-            src="https://images.unsplash.com/photo-1440778303588-435521a3e098?w=600&q=75"
-            data-full="https://images.unsplash.com/photo-1440778303588-435521a3e098?w=1600&q=90"
-            alt="Camel caravan crossing the Sahara"
-            loading="lazy" width="600" height="450"
-          />
-          <div class="gallery-item__overlay"><span class="gallery-item__caption">Camel Caravan</span></div>
-        </figure>
-
-        <figure class="gallery-item" role="listitem">
-          <img
-            src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=75"
-            data-full="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1600&q=90"
-            alt="Milky Way over the Sahara desert"
-            loading="lazy" width="600" height="900"
-          />
-          <div class="gallery-item__overlay"><span class="gallery-item__caption">Milky Way</span></div>
-        </figure>
-
-        <figure class="gallery-item" role="listitem">
-          <img
-            src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=75"
-            data-full="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1600&q=90"
-            alt="Luxury glamping tent interior"
-            loading="lazy" width="600" height="400"
-          />
-          <div class="gallery-item__overlay"><span class="gallery-item__caption">Glamping Interior</span></div>
-        </figure>
-
-        <figure class="gallery-item" role="listitem">
-          <img
-            src="https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?w=600&q=75"
-            data-full="https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?w=1600&q=90"
-            alt="Sunrise over the Sahara desert dunes"
-            loading="lazy" width="600" height="400"
-          />
-          <div class="gallery-item__overlay"><span class="gallery-item__caption">Desert Sunrise</span></div>
-        </figure>
-
-        <figure class="gallery-item" role="listitem">
-          <img
-            src="https://images.unsplash.com/photo-1569399079452-a7a6f9d8de78?w=600&q=75"
-            data-full="https://images.unsplash.com/photo-1569399079452-a7a6f9d8de78?w=1600&q=90"
-            alt="Traditional Berber dinner around campfire"
-            loading="lazy" width="600" height="800"
-          />
-          <div class="gallery-item__overlay"><span class="gallery-item__caption">Berber Dinner</span></div>
-        </figure>
-
-        <figure class="gallery-item" role="listitem">
-          <img
-            src="https://images.unsplash.com/photo-1581889470536-467bdbe30cd0?w=600&q=75"
-            data-full="https://images.unsplash.com/photo-1581889470536-467bdbe30cd0?w=1600&q=90"
-            alt="Sandboarding on the Sahara dunes"
-            loading="lazy" width="600" height="450"
-          />
-          <div class="gallery-item__overlay"><span class="gallery-item__caption">Sandboarding</span></div>
-        </figure>
-
-        <figure class="gallery-item" role="listitem">
-          <img
-            src="https://images.unsplash.com/photo-1519583272095-6433daf26b6e?w=600&q=75"
-            data-full="https://images.unsplash.com/photo-1519583272095-6433daf26b6e?w=1600&q=90"
-            alt="Desert oasis with palm trees"
-            loading="lazy" width="600" height="400"
-          />
-          <div class="gallery-item__overlay"><span class="gallery-item__caption">Hidden Oasis</span></div>
-        </figure>
-
-      </div>
+      <!-- Gallery items injected by main.js from js/images.js → gallery array -->
+      <div class="gallery-grid" id="gallery-grid" role="list" aria-label="Photo gallery"></div>
     </div>
   </section>
 
@@ -618,8 +527,8 @@
   </div>
 
 
-  <!-- === DIVIDER (dark → cream) === -->
-  <div class="divider-dunes divider-dunes--cream" aria-hidden="true">
+  <!-- === DIVIDER (gallery → booking, both dark) === -->
+  <div class="divider-dunes divider-dunes--dark" aria-hidden="true">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,20 C360,55 720,5 1080,40 C1260,55 1380,15 1440,30 L1440,60 L0,60 Z"/>
     </svg>
@@ -629,105 +538,161 @@
   <!-- ============================================================
        BOOKING
        ============================================================ -->
-  <section id="booking" class="section" aria-labelledby="booking-title">
+  <section id="booking" class="section booking-section" aria-labelledby="booking-title">
     <div class="container">
 
       <div class="section__header animate-on-scroll">
         <span class="section__eyebrow">Reserve Your Night</span>
         <h2 id="booking-title" data-i18n="booking.title">Book Your Stay</h2>
-        <p data-i18n="booking.subtitle">Choose your tent, select your dates, and send your request. We will confirm via WhatsApp.</p>
+        <p data-i18n="booking.subtitle">Choose your tent, pick your dates, and send your request — we confirm via WhatsApp.</p>
       </div>
 
-      <div class="booking__layout">
+      <!-- Success screen (shown after submit, hides the card) -->
+      <div class="booking-success" id="booking-success" role="status" aria-live="polite">
+        <div class="booking-success__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 class="booking-success__title" data-i18n="booking.success.title">Request Sent!</h3>
+        <p class="booking-success__desc" data-i18n="booking.success.desc">
+          WhatsApp has been opened with your booking details. Sahara Camp will reply shortly to confirm.
+        </p>
+        <button class="btn btn--primary mt-2" onclick="location.reload()">Make another booking</button>
+      </div>
 
-        <!-- LEFT: Calendar + Legend -->
-        <div class="booking__calendar-wrap" style="position:relative;">
-          <div id="booking-loading-overlay" aria-label="Loading availability" aria-live="polite">
-            <span class="spinner" style="width:36px;height:36px;border-width:3px;border-color:rgba(200,169,110,0.3);border-top-color:#A07840;"></span>
-          </div>
+      <!-- Main booking card -->
+      <div class="booking-card" id="booking-card">
 
-          <!-- Litepicker will attach here -->
-          <label class="sr-only" for="checkin">Check-in date</label>
-          <input type="text" id="checkin"  name="checkin"  readonly placeholder="Check-in"  aria-label="Check-in date" />
-          <label class="sr-only" for="checkout">Check-out date</label>
-          <input type="text" id="checkout" name="checkout" readonly placeholder="Check-out" aria-label="Check-out date" style="display:none;" />
-
-          <!-- Legend -->
-          <div class="booking__legend" aria-label="Calendar legend">
-            <div class="booking__legend-item">
-              <span class="booking__legend-swatch booking__legend-swatch--available" aria-hidden="true"></span>
-              <span data-i18n="booking.legend.available">Available</span>
-            </div>
-            <div class="booking__legend-item">
-              <span class="booking__legend-swatch booking__legend-swatch--booked" aria-hidden="true"></span>
-              <span data-i18n="booking.legend.booked">Booked</span>
-            </div>
-            <div class="booking__legend-item">
-              <span class="booking__legend-swatch booking__legend-swatch--selected" aria-hidden="true"></span>
-              <span data-i18n="booking.legend.selected">Selected</span>
-            </div>
-          </div>
+        <!-- Step tabs -->
+        <div class="booking-steps" role="tablist" aria-label="Booking steps">
+          <button class="booking-step active" id="step-btn-1" role="tab" aria-selected="true"  aria-controls="step-panel-1" data-step="1">
+            <span class="booking-step__num">1</span>
+            <span class="booking-step__label">Choose &amp; Dates</span>
+          </button>
+          <span class="booking-step__divider" aria-hidden="true"></span>
+          <button class="booking-step" id="step-btn-2" role="tab" aria-selected="false" aria-controls="step-panel-2" data-step="2">
+            <span class="booking-step__num">2</span>
+            <span class="booking-step__label">Your Details</span>
+          </button>
+          <span class="booking-step__divider" aria-hidden="true"></span>
+          <button class="booking-step" id="step-btn-3" role="tab" aria-selected="false" aria-controls="step-panel-3" data-step="3">
+            <span class="booking-step__num">3</span>
+            <span class="booking-step__label">Confirm</span>
+          </button>
         </div>
 
-        <!-- RIGHT: Form -->
-        <div>
-          <!-- Success state (hidden by default) -->
-          <div class="booking-success" id="booking-success" role="status" aria-live="polite">
-            <div class="booking-success__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <div id="booking-global-error" role="alert" aria-live="assertive"></div>
+
+        <form id="booking-form" novalidate aria-label="Booking request form">
+
+          <!-- ── STEP 1: Tent + Calendar ────────────────────── -->
+          <div class="booking-panel" id="step-panel-1" role="tabpanel" aria-labelledby="step-btn-1">
+
+            <!-- Tent type selector (visual cards) -->
+            <p class="booking-panel__label">Select your accommodation</p>
+            <div class="tent-choice-grid">
+              <label class="tent-choice" for="tent-traditional">
+                <input type="radio" id="tent-traditional" name="tent-type-radio" value="traditional" />
+                <span class="tent-choice__inner">
+                  <span class="tent-choice__icon">⛺</span>
+                  <span class="tent-choice__name" data-i18n="booking.form.traditional">Traditional Berber Tent</span>
+                  <span class="tent-choice__price">€45 / night</span>
+                  <span class="tent-choice__capacity">Up to 2 guests</span>
+                </span>
+                <span class="tent-choice__check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </label>
+              <label class="tent-choice" for="tent-glamping">
+                <input type="radio" id="tent-glamping" name="tent-type-radio" value="glamping" />
+                <span class="tent-choice__inner">
+                  <span class="tent-choice__icon">🏕️</span>
+                  <span class="tent-choice__name" data-i18n="booking.form.glamping">Luxury Glamping Tent</span>
+                  <span class="tent-choice__price">€90 / night</span>
+                  <span class="tent-choice__capacity">Up to 4 guests</span>
+                </span>
+                <span class="tent-choice__check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </label>
             </div>
-            <h3 class="booking-success__title" data-i18n="booking.success.title">Request Sent!</h3>
-            <p class="booking-success__desc" data-i18n="booking.success.desc">
-              WhatsApp has been opened with your booking details. Sahara Camp will reply shortly to confirm.
-            </p>
-            <a href="#booking" class="btn btn--primary mt-2" onclick="location.reload()">Make another booking</a>
-          </div>
+            <span class="form-error" data-field="tentType" role="alert"></span>
 
-          <!-- Global error -->
-          <div id="booking-global-error" role="alert" aria-live="assertive"></div>
-
-          <!-- Booking Form -->
-          <form id="booking-form" class="booking__form" novalidate aria-label="Booking request form">
-
-            <!-- Tent Type -->
-            <div class="form-group">
-              <label for="tent-type" data-i18n="booking.form.tentType">Tent Type</label>
-              <select id="tent-type" name="tent-type" required aria-required="true">
-                <option value="" data-i18n="booking.form.tentTypePlaceholder">Select a tent</option>
-                <option value="traditional" data-i18n="booking.form.traditional">Traditional Berber Tent</option>
-                <option value="glamping"    data-i18n="booking.form.glamping">Luxury Glamping Tent</option>
-              </select>
-              <span class="form-error" data-field="tentType" role="alert"></span>
+            <!-- Calendar (Litepicker inline) -->
+            <p class="booking-panel__label" style="margin-top:2rem;">Select your dates</p>
+            <div class="booking-calendar-container">
+              <!-- Litepicker inline renders here; hidden inputs hold values -->
+              <div id="litepicker-container"></div>
+              <input type="hidden" id="checkin"  name="checkin"  />
+              <input type="hidden" id="checkout" name="checkout" />
             </div>
 
-            <!-- Dates (populated by Litepicker) -->
-            <div class="form-row">
-              <div class="form-group">
-                <label data-i18n="booking.form.checkin">Check-in</label>
-                <input type="text" id="checkin-display" readonly placeholder="YYYY-MM-DD" aria-label="Check-in date selected" />
+            <!-- Selected dates display -->
+            <div class="booking-dates-display" id="booking-dates-display" aria-live="polite">
+              <div class="booking-dates-display__item" id="display-checkin">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div>
+                  <span class="booking-dates-display__label" data-i18n="booking.form.checkin">Check-in</span>
+                  <span class="booking-dates-display__value" id="checkin-display">—</span>
+                </div>
               </div>
-              <div class="form-group">
-                <label data-i18n="booking.form.checkout">Check-out</label>
-                <input type="text" id="checkout-display" readonly placeholder="YYYY-MM-DD" aria-label="Check-out date selected" />
+              <span class="booking-dates-display__arrow" aria-hidden="true">→</span>
+              <div class="booking-dates-display__item" id="display-checkout">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div>
+                  <span class="booking-dates-display__label" data-i18n="booking.form.checkout">Check-out</span>
+                  <span class="booking-dates-display__value" id="checkout-display">—</span>
+                </div>
               </div>
+              <div class="booking-dates-display__nights" id="display-nights"></div>
             </div>
             <span class="form-error" data-field="dates" role="alert"></span>
 
-            <!-- Guests -->
+            <!-- Legend -->
+            <div class="booking__legend" aria-label="Calendar legend">
+              <div class="booking__legend-item">
+                <span class="booking__legend-swatch booking__legend-swatch--available" aria-hidden="true"></span>
+                <span data-i18n="booking.legend.available">Available</span>
+              </div>
+              <div class="booking__legend-item">
+                <span class="booking__legend-swatch booking__legend-swatch--selected" aria-hidden="true"></span>
+                <span data-i18n="booking.legend.selected">Selected</span>
+              </div>
+            </div>
+
+            <div class="booking-panel__actions">
+              <button type="button" class="btn btn--primary btn--lg" id="step1-next">
+                Continue to Details
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- ── STEP 2: Guest details ──────────────────────── -->
+          <div class="booking-panel hidden" id="step-panel-2" role="tabpanel" aria-labelledby="step-btn-2">
+
+            <!-- Guests row -->
             <div class="form-row">
               <div class="form-group">
                 <label for="adults" data-i18n="booking.form.adults">Adults</label>
-                <input type="number" id="adults" name="adults" min="1" max="10" value="2" required aria-required="true" />
+                <div class="counter-input">
+                  <button type="button" class="counter-btn" data-target="adults" data-delta="-1" aria-label="Fewer adults">−</button>
+                  <input type="number" id="adults" name="adults" min="1" max="10" value="2" required aria-required="true" readonly />
+                  <button type="button" class="counter-btn" data-target="adults" data-delta="1"  aria-label="More adults">+</button>
+                </div>
                 <span class="form-error" data-field="adults" role="alert"></span>
               </div>
               <div class="form-group">
                 <label for="children" data-i18n="booking.form.children">Children</label>
-                <input type="number" id="children" name="children" min="0" max="10" value="0" />
+                <div class="counter-input">
+                  <button type="button" class="counter-btn" data-target="children" data-delta="-1" aria-label="Fewer children">−</button>
+                  <input type="number" id="children" name="children" min="0" max="10" value="0" readonly />
+                  <button type="button" class="counter-btn" data-target="children" data-delta="1"  aria-label="More children">+</button>
+                </div>
                 <span class="form-error" data-field="guests" role="alert"></span>
               </div>
             </div>
 
-            <!-- Full Name -->
+            <!-- Name -->
             <div class="form-group">
               <label for="guest-name" data-i18n="booking.form.name">Full Name</label>
               <input type="text" id="guest-name" name="guest-name" required aria-required="true"
@@ -735,53 +700,100 @@
               <span class="form-error" data-field="name" role="alert"></span>
             </div>
 
-            <!-- Email -->
-            <div class="form-group">
-              <label for="email" data-i18n="booking.form.email">Email</label>
-              <input type="email" id="email" name="email" required aria-required="true"
-                     autocomplete="email" placeholder="sophie@example.com" />
-              <span class="form-error" data-field="email" role="alert"></span>
+            <!-- Email + Phone -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email" data-i18n="booking.form.email">Email</label>
+                <input type="email" id="email" name="email" required aria-required="true"
+                       autocomplete="email" placeholder="sophie@example.com" />
+                <span class="form-error" data-field="email" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="phone" data-i18n="booking.form.phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required aria-required="true"
+                       autocomplete="tel" placeholder="+49 170 123 4567" />
+                <span class="form-error" data-field="phone" role="alert"></span>
+              </div>
             </div>
 
-            <!-- Phone -->
+            <!-- Special requests -->
             <div class="form-group">
-              <label for="phone" data-i18n="booking.form.phone">Phone</label>
-              <input type="tel" id="phone" name="phone" required aria-required="true"
-                     autocomplete="tel" placeholder="+49 170 123 4567" />
-              <span class="form-error" data-field="phone" role="alert"></span>
-            </div>
-
-            <!-- Special Requests -->
-            <div class="form-group">
-              <label for="special-req" data-i18n="booking.form.special">Special Requests</label>
+              <label for="special-req" data-i18n="booking.form.special">Special Requests <span style="font-weight:400;opacity:0.6;">(optional)</span></label>
               <textarea id="special-req" name="special-req" rows="3"
-                        data-i18n-placeholder="booking.form.specialPlaceholder"
-                        placeholder="Dietary needs, celebration, preferred activities..."></textarea>
+                        placeholder="Dietary needs, celebration, preferred activities…"></textarea>
             </div>
 
-            <!-- Price Preview (populated by JS) -->
-            <div class="price-preview" id="price-preview" aria-live="polite"></div>
+            <div class="booking-panel__actions">
+              <button type="button" class="btn btn--outline" id="step2-back">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                Back
+              </button>
+              <button type="button" class="btn btn--primary btn--lg" id="step2-next">
+                Review &amp; Confirm
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
 
-            <!-- Submit -->
-            <button type="submit" id="booking-submit" class="btn btn--whatsapp btn--lg w-full">
-              <svg viewBox="0 0 24 24" fill="white" width="20" height="20" aria-hidden="true">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-              <span data-i18n="booking.form.submit">Request Booking via WhatsApp</span>
-            </button>
+          <!-- ── STEP 3: Review + Submit ─────────────────────── -->
+          <div class="booking-panel hidden" id="step-panel-3" role="tabpanel" aria-labelledby="step-btn-3">
 
-            <p style="font-size:0.78rem;color:var(--color-text-light);text-align:center;margin-top:-0.5rem;">
-              You will be redirected to WhatsApp to send your booking request. The camp owner will confirm shortly.
+            <p class="booking-panel__label">Review your booking</p>
+
+            <!-- Summary card -->
+            <div class="booking-summary">
+              <div class="booking-summary__row">
+                <span class="booking-summary__key">Tent</span>
+                <span class="booking-summary__val" id="summary-tent">—</span>
+              </div>
+              <div class="booking-summary__row">
+                <span class="booking-summary__key" data-i18n="booking.form.checkin">Check-in</span>
+                <span class="booking-summary__val" id="summary-checkin">—</span>
+              </div>
+              <div class="booking-summary__row">
+                <span class="booking-summary__key" data-i18n="booking.form.checkout">Check-out</span>
+                <span class="booking-summary__val" id="summary-checkout">—</span>
+              </div>
+              <div class="booking-summary__row">
+                <span class="booking-summary__key">Guests</span>
+                <span class="booking-summary__val" id="summary-guests">—</span>
+              </div>
+              <div class="booking-summary__row">
+                <span class="booking-summary__key">Name</span>
+                <span class="booking-summary__val" id="summary-name">—</span>
+              </div>
+              <div class="booking-summary__row booking-summary__row--total">
+                <span class="booking-summary__key">Estimated Total</span>
+                <span class="booking-summary__val" id="summary-total">—</span>
+              </div>
+            </div>
+
+            <p class="booking-note">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Clicking the button below will open WhatsApp with all your details pre-filled. The camp owner will reply to confirm your booking.
             </p>
 
-          </form>
-        </div>
-      </div>
+            <div class="booking-panel__actions">
+              <button type="button" class="btn btn--outline" id="step3-back">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                Back
+              </button>
+              <button type="submit" id="booking-submit" class="btn btn--whatsapp btn--lg">
+                <svg viewBox="0 0 24 24" fill="white" width="20" height="20" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                <span data-i18n="booking.form.submit">Send Booking via WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div><!-- /.booking-card -->
     </div>
   </section>
 
 
-  <!-- === DIVIDER (cream → dark for location) === -->
+  <!-- === DIVIDER (booking → location, both dark) === -->
   <div class="divider-dunes divider-dunes--dark" aria-hidden="true">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,10 C400,55 800,0 1200,45 C1320,55 1400,20 1440,30 L1440,60 L0,60 Z"/>
@@ -805,7 +817,7 @@
         <!-- Map -->
         <div class="location__map-wrap">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.0!2d9.0160!3d33.4547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sTembaine%2C+Douz%2C+Tunisia!5e0!3m2!1sen!2stn!4v1680000000000"
+            src="https://www.google.com/maps?q=33.4547,9.0160&z=12&output=embed"
             title="Sahara Camp location on Google Maps"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
@@ -925,61 +937,48 @@
   </footer>
 
 
+  <!-- Chatbot widget -->
+  <div id="chatbot-widget" class="chatbot-widget" aria-hidden="true">
+    <div class="chatbot__window" role="dialog" aria-modal="true" aria-labelledby="chatbot-title" aria-describedby="chatbot-subtitle">
+      <div class="chatbot__header">
+        <div class="chatbot__brand">
+          <strong class="chatbot__title" id="chatbot-title">Sahara Camp</strong>
+          <span class="chatbot__subtitle" id="chatbot-subtitle">Ask us anything</span>
+        </div>
+        <button class="chatbot__close" type="button" aria-label="Close chat" onclick="document.getElementById('chatbot-widget').classList.remove('chatbot--open')">×</button>
+      </div>
+      <div class="chatbot__body" id="chatbot-body"></div>
+    </div>
+    <button id="chatbot-toggle" class="chatbot-toggle" type="button" aria-label="Open chat" aria-expanded="false"
+      onclick="var w=document.getElementById('chatbot-widget'); w.classList.toggle('chatbot--open'); this.setAttribute('aria-expanded', w.classList.contains('chatbot--open'));">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+      </svg>
+    </button>
+  </div>
+
+
   <!-- ============================================================
        SCRIPTS
        ============================================================ -->
 
-  <!-- Supabase JS v2 (CDN) — exposes window.supabase as the module namespace -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script>
-    /* The UMD bundle sets window.supabase to the module object {createClient, …}.
-       supabase-client.js reads window.supabaseJs, so alias it here.
-       We then reset window.supabase to undefined so supabase-client.js
-       can assign the initialised client back to it. */
-    window.supabaseJs = window.supabase;
-    window.supabase   = undefined;
-  </script>
+  <!-- Image config — load first so applyImages() can run on DOMContentLoaded -->
+  <script src="js/images.js"></script>
 
   <!-- Litepicker -->
   <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
 
   <!-- Our scripts (order matters) -->
   <script src="js/translations.js"></script>
-  <script src="js/supabase-client.js"></script>
   <script src="js/main.js"></script>
   <script src="js/booking.js"></script>
+  <script src="js/chatbot.js"></script>
 
-  <!-- Inline init: footer year + sync checkin/checkout display -->
+  <!-- Footer year -->
   <script>
     'use strict';
-    // Footer year
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Sync hidden Litepicker inputs to visible display inputs in the form
-    // (Litepicker attaches to #checkin / #checkout which are outside the form for calendar positioning;
-    //  the form reads those values directly.)
-    document.addEventListener('DOMContentLoaded', function () {
-      const checkin        = document.getElementById('checkin');
-      const checkout       = document.getElementById('checkout');
-      const checkinDisplay = document.getElementById('checkin-display');
-      const checkoutDisplay= document.getElementById('checkout-display');
-
-      if (!checkin || !checkinDisplay) return;
-
-      const sync = function () {
-        if (checkinDisplay)  checkinDisplay.value  = checkin.value  || '';
-        if (checkoutDisplay) checkoutDisplay.value = checkout ? checkout.value : '';
-      };
-
-      // Observe value changes (Litepicker sets value programmatically)
-      const observer = new MutationObserver(sync);
-      observer.observe(checkin, { attributes: true, attributeFilter: ['value'] });
-      if (checkout) observer.observe(checkout, { attributes: true, attributeFilter: ['value'] });
-
-      // Also poll briefly since Litepicker may update via property not attribute
-      setInterval(sync, 300);
-    });
   </script>
 
 </body>

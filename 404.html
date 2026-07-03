@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Sahara Camp</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏕️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" />
+  <style>
+    :root {
+      --color-sand:        #C8A96E;
+      --color-sand-light:  #E8D5A3;
+      --color-sand-dark:   #A07840;
+      --color-night:       #1A1209;
+      --color-cream:       #FAF3E0;
+      --font-heading: 'Playfair Display', serif;
+      --font-body:    'Lato', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      color: var(--color-cream);
+      background-color: var(--color-night);
+      background-image: url('https://images.unsplash.com/photo-1613169620329-6785c004d900?q=85&w=1920&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 18, 9, 0.75);
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 540px;
+    }
+    .icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 900;
+      color: var(--color-sand);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--color-sand-light);
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: linear-gradient(135deg, var(--color-sand) 0%, var(--color-sand-dark) 100%);
+      color: var(--color-night);
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.45);
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="icon" aria-hidden="true">🏕️</div>
+    <h1>Lost in the Desert</h1>
+    <p>The page you are looking for has drifted off into the dunes. Let's guide you back to camp.</p>
+    <a href="/" class="btn">Return to Sahara Camp</a>
+  </div>
+</body>
+</html>

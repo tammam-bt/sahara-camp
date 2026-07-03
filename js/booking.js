@@ -1,503 +1,388 @@
-"use strict";
+'use strict';
 
 /* =========================================
-   Sahara Camp — Booking Flow
+   Sahara Camp — Booking Flow (3-step, WhatsApp-only)
    ========================================= */
-
-const supabase = window.supabase;
 
 /* =========================================
-   Pricing & Configuration
+   Config
    ========================================= */
-
-const PRICES = {
-  traditional: 45, // EUR per night
-  glamping: 90, // EUR per night
-};
-
-const MAX_GUESTS = {
-  traditional: 2,
-  glamping: 4,
-};
-
-const WHATSAPP_NUMBER = "21693290920"; // no + prefix for wa.me URL
-
-// NOTE: Replace YOUR_PROJECT_REF with your actual Supabase project ref after setup
-const CONFIRM_BASE_URL =
-  "https://alumewtgdjdxsyfphfrm.supabase.co/functions/v1/confirm-booking";
+const PRICES     = { traditional: 45, glamping: 90 };
+const MAX_GUESTS = { traditional: 2,  glamping: 4  };
+const WHATSAPP_NUMBER  = '21693290920';
 
 /* =========================================
-   DOM Element Cache
+   State
    ========================================= */
+let picker      = null;
+let currentStep = 1;
 
-const els = {
-  form: document.getElementById("booking-form"),
-  tentType: document.getElementById("tent-type"),
-  checkin: document.getElementById("checkin"),
-  checkout: document.getElementById("checkout"),
-  adults: document.getElementById("adults"),
-  children: document.getElementById("children"),
-  name: document.getElementById("guest-name"),
-  email: document.getElementById("email"),
-  phone: document.getElementById("phone"),
-  specialReq: document.getElementById("special-req"),
-  submitBtn: document.getElementById("booking-submit"),
-  success: document.getElementById("booking-success"),
-  pricePreview: document.querySelector(".price-preview"),
-  loadingOverlay: document.getElementById("booking-loading-overlay"),
-};
+/* =========================================
+   DOM refs (resolved after DOMContentLoaded)
+   ========================================= */
+let els = {};
 
-let picker = null;
+function resolveEls() {
+  els = {
+    form:         document.getElementById('booking-form'),
+    card:         document.getElementById('booking-card'),
+    success:      document.getElementById('booking-success'),
+    globalErr:    document.getElementById('booking-global-error'),
+    calContainer: document.getElementById('litepicker-container'),
+    checkin:      document.getElementById('checkin'),
+    checkout:     document.getElementById('checkout'),
+    adults:       document.getElementById('adults'),
+    children:     document.getElementById('children'),
+    name:         document.getElementById('guest-name'),
+    email:        document.getElementById('email'),
+    phone:        document.getElementById('phone'),
+    specialReq:   document.getElementById('special-req'),
+    submitBtn:    document.getElementById('booking-submit'),
+    // display
+    checkinDisplay:  document.getElementById('checkin-display'),
+    checkoutDisplay: document.getElementById('checkout-display'),
+    nightsDisplay:   document.getElementById('display-nights'),
+    // summary
+    summaryTent:    document.getElementById('summary-tent'),
+    summaryCheckin: document.getElementById('summary-checkin'),
+    summaryCheckout:document.getElementById('summary-checkout'),
+    summaryGuests:  document.getElementById('summary-guests'),
+    summaryName:    document.getElementById('summary-name'),
+    summaryTotal:   document.getElementById('summary-total'),
+  };
+}
 
 /* =========================================
    Utilities
    ========================================= */
-
-function formatDate(date) {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
+function fmt(date) {
+  return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+}
+function parse(str) {
+  const [y,m,d] = str.split('-').map(Number);
+  return new Date(y, m-1, d);
+}
+function nights(a, b) {
+  return Math.max(0, Math.round((parse(b) - parse(a)) / 86400000));
+}
+function getTentValue() {
+  const r = document.querySelector('input[name="tent-type-radio"]:checked');
+  return r ? r.value : '';
+}
+function formatDisplay(dateStr) {
+  if (!dateStr) return '—';
+  const [y,m,d] = dateStr.split('-').map(Number);
+  return new Date(y,m-1,d).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
 }
 
-function parseDate(dateStr) {
-  const [y, m, d] = dateStr.split("-").map(Number);
-  return new Date(y, m - 1, d);
-}
-
-function calculateNights(checkIn, checkOut) {
-  const msPerDay = 24 * 60 * 60 * 1000;
-  return Math.max(
-    0,
-    Math.round((checkOut.getTime() - checkIn.getTime()) / msPerDay),
-  );
-}
-
-function getTranslation(key, fallback) {
-  const lang = window.currentLang || "en";
+/** Read a translated booking error string for the current language. */
+function terr(key, vars) {
+  const lang = window.currentLang || 'en';
   const t = window.TRANSLATIONS && window.TRANSLATIONS[lang];
-  if (!t) return fallback;
-  // Support dot-notation keys like 'booking.form.nights'
-  return (
-    key
-      .split(".")
-      .reduce((obj, k) => (obj && obj[k] !== undefined ? obj[k] : null), t) ||
-    fallback
-  );
+  let str = t && t.booking && t.booking.error && t.booking.error[key];
+  if (!str) {
+    // Fallback to English
+    const en = window.TRANSLATIONS && window.TRANSLATIONS.en;
+    str = en && en.booking && en.booking.error && en.booking.error[key] || key;
+  }
+  if (vars) {
+    Object.keys(vars).forEach(k => { str = str.replace(`{${k}}`, vars[k]); });
+  }
+  return str;
 }
 
-function showFieldError(fieldName, message) {
-  const el = document.querySelector(`.form-error[data-field="${fieldName}"]`);
+/* =========================================
+   Errors
+   ========================================= */
+function showFieldError(field, msg) {
+  const el = document.querySelector(`.form-error[data-field="${field}"]`);
   if (!el) return;
-  el.textContent = message;
-  el.classList.add("visible");
+  el.textContent = msg;
+  el.classList.add('visible');
 }
-
-function clearFieldErrors() {
-  document.querySelectorAll(".form-error.visible").forEach((el) => {
-    el.textContent = "";
-    el.classList.remove("visible");
+function clearErrors() {
+  document.querySelectorAll('.form-error.visible').forEach(e => {
+    e.textContent = '';
+    e.classList.remove('visible');
   });
 }
-
-function showGlobalError(message) {
-  const el = document.getElementById("booking-global-error");
-  if (el) {
-    el.textContent = message;
-    el.classList.add("visible");
-  }
+function showGlobalError(msg) {
+  if (!els.globalErr) return;
+  els.globalErr.textContent = msg;
+  els.globalErr.classList.add('visible');
 }
-
 function hideGlobalError() {
-  const el = document.getElementById("booking-global-error");
-  if (el) {
-    el.textContent = "";
-    el.classList.remove("visible");
-  }
-}
-
-function setLoadingOverlay(show) {
-  if (els.loadingOverlay) els.loadingOverlay.classList.toggle("visible", show);
-}
-
-function setSubmitLoading(loading, label) {
-  if (!els.submitBtn) return;
-  if (loading) {
-    els.submitBtn.disabled = true;
-    els.submitBtn.dataset.originalText = els.submitBtn.textContent;
-    els.submitBtn.innerHTML = `<span class="spinner"></span> ${label || "Processing..."}`;
-  } else {
-    els.submitBtn.disabled = false;
-    els.submitBtn.textContent =
-      els.submitBtn.dataset.originalText || "Request Booking via WhatsApp";
-  }
+  if (!els.globalErr) return;
+  els.globalErr.textContent = '';
+  els.globalErr.classList.remove('visible');
 }
 
 /* =========================================
-   Step 1 — Fetch Booked Dates
+   Step navigation
    ========================================= */
-
-async function fetchBookedDates(tentType = null) {
-  if (!supabase) throw new Error("Supabase client is not available.");
-
-  let query = supabase
-    .from("bookings")
-    .select("check_in, check_out, tent_type")
-    .eq("status", "confirmed");
-
-  if (tentType) query = query.eq("tent_type", tentType);
-
-  const { data, error } = await query;
-  if (error) throw new Error(`Failed to fetch booked dates: ${error.message}`);
-
-  return (data || []).map((row) => ({
-    checkIn: parseDate(row.check_in),
-    checkOut: parseDate(row.check_out),
-  }));
-}
-
-function expandDisabledDates(bookings) {
-  const disabled = new Set();
-  bookings.forEach(({ checkIn, checkOut }) => {
-    const current = new Date(checkIn);
-    const end = new Date(checkOut);
-    while (current <= end) {
-      disabled.add(formatDate(current));
-      current.setDate(current.getDate() + 1);
-    }
+function goToStep(n) {
+  [1,2,3].forEach(i => {
+    const panel = document.getElementById(`step-panel-${i}`);
+    const btn   = document.getElementById(`step-btn-${i}`);
+    if (!panel || !btn) return;
+    panel.classList.toggle('hidden', i !== n);
+    btn.classList.toggle('active',   i === n);
+    btn.classList.toggle('done',     i < n);
+    btn.setAttribute('aria-selected', i === n ? 'true' : 'false');
   });
-  return Array.from(disabled);
+  currentStep = n;
+  clearErrors();
+  hideGlobalError();
+  const card = document.getElementById('booking-card');
+  if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 /* =========================================
-   Step 2 — Initialize Litepicker
+   Step 1 validation
+   ========================================= */
+function validateStep1() {
+  const tent = getTentValue();
+  const ci   = els.checkin  ? els.checkin.value  : '';
+  const co   = els.checkout ? els.checkout.value : '';
+  let ok = true;
+
+  if (!tent) {
+    showFieldError('tentType', terr('tentType'));
+    ok = false;
+  }
+  if (!ci || !co) {
+    showFieldError('dates', terr('dates'));
+    ok = false;
+  }
+  return ok;
+}
+
+/* =========================================
+   Step 2 validation
+   ========================================= */
+function validateStep2() {
+  const tent     = getTentValue();
+  const adults   = Number(els.adults?.value   || 0);
+  const children = Number(els.children?.value || 0);
+  const name     = els.name?.value.trim()  || '';
+  const email    = els.email?.value.trim() || '';
+  const phone    = els.phone?.value.trim() || '';
+  let ok = true;
+
+  if (adults < 1) {
+    showFieldError('adults', terr('adults'));
+    ok = false;
+  }
+  if (tent && MAX_GUESTS[tent] && (adults + children) > MAX_GUESTS[tent]) {
+    showFieldError('guests', terr('guests', { max: MAX_GUESTS[tent] }));
+    ok = false;
+  }
+  if (!name)  { showFieldError('name',  terr('name'));        ok = false; }
+  if (!email) { showFieldError('email', terr('email'));       ok = false; }
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showFieldError('email', terr('emailInvalid'));
+    ok = false;
+  }
+  if (!phone) { showFieldError('phone', terr('phone'));       ok = false; }
+  return ok;
+}
+
+/* =========================================
+   Populate summary (step 3)
+   ========================================= */
+function populateSummary() {
+  const tent     = getTentValue();
+  const ci       = els.checkin?.value  || '';
+  const co       = els.checkout?.value || '';
+  const adults   = Number(els.adults?.value   || 0);
+  const children = Number(els.children?.value || 0);
+  const name     = els.name?.value.trim() || '';
+  const n        = ci && co ? nights(ci, co) : 0;
+  const total    = tent ? PRICES[tent] * n : 0;
+
+  const tentLabel = tent === 'traditional' ? 'Traditional Berber Tent'
+                  : tent === 'glamping'    ? 'Luxury Glamping Tent'
+                  : '—';
+  const guestStr = children > 0
+    ? `${adults} adult${adults!==1?'s':''}, ${children} child${children!==1?'ren':''}`
+    : `${adults} adult${adults!==1?'s':''}`;
+
+  if (els.summaryTent)    els.summaryTent.textContent    = tentLabel;
+  if (els.summaryCheckin) els.summaryCheckin.textContent = formatDisplay(ci);
+  if (els.summaryCheckout)els.summaryCheckout.textContent= formatDisplay(co);
+  if (els.summaryGuests)  els.summaryGuests.textContent  = guestStr;
+  if (els.summaryName)    els.summaryName.textContent    = name || '—';
+  if (els.summaryTotal)   els.summaryTotal.textContent   = total > 0 ? `€${total} (${n} night${n!==1?'s':''})` : '—';
+}
+
+/* =========================================
+   Calendar — Litepicker inline
    ========================================= */
 
-function initCalendar(disabledDates) {
-  if (!els.checkin || !els.checkout) return;
+// Called by both onSelect and the 'selected' event — handles null d2 gracefully
+function applyPickerDates(d1, d2) {
+  const toJS = d => d && (d.toJSDate ? d.toJSDate() : (d instanceof Date ? d : new Date(d)));
+  const ci = toJS(d1);
+  const co = toJS(d2);
 
-  const isMobile = window.innerWidth < 640;
-
-  if (picker) {
-    picker.destroy();
-    picker = null;
+  if (ci && !isNaN(ci)) {
+    const ciStr = fmt(ci);
+    if (els.checkin) els.checkin.value = ciStr;
+    const ciEl = document.getElementById('checkin-display');
+    if (ciEl) ciEl.textContent = formatDisplay(ciStr);
   }
+
+  if (ci && co && !isNaN(ci) && !isNaN(co)) {
+    const ciStr = fmt(ci);
+    const coStr = fmt(co);
+    if (els.checkout) els.checkout.value = coStr;
+    const coEl = document.getElementById('checkout-display');
+    if (coEl) coEl.textContent = formatDisplay(coStr);
+
+    const n = nights(ciStr, coStr);
+    const nightsEl = document.getElementById('display-nights');
+    if (nightsEl) {
+      nightsEl.textContent    = n > 0 ? `${n} night${n !== 1 ? 's' : ''}` : '';
+      nightsEl.style.display  = n > 0 ? 'flex' : 'none';
+    }
+
+    const errEl = document.querySelector('.form-error[data-field="dates"]');
+    if (errEl) { errEl.textContent = ''; errEl.classList.remove('visible'); }
+  }
+}
+
+function initCalendar() {
+  if (!window.Litepicker || !els.calContainer) return;
+  if (picker) { picker.destroy(); picker = null; }
+
+  const dummy = document.createElement('input');
+  dummy.type  = 'hidden';
+  document.body.appendChild(dummy);
 
   picker = new window.Litepicker({
-    element: els.checkin,
-    elementEnd: els.checkout,
-    singleMode: false,
-    numberOfMonths: isMobile ? 1 : 2,
-    numberOfColumns: isMobile ? 1 : 2,
-    format: "YYYY-MM-DD",
-    minDate: new Date(),
-    disallowLockDaysInRange: true,
-    lockDays: disabledDates,
-    lockDaysFormat: "YYYY-MM-DD",
-    onSelect(date1, date2) {
-      if (!date1 || !date2) return;
-      const checkIn = date1.toJSDate ? date1.toJSDate() : new Date(date1);
-      const checkOut = date2.toJSDate ? date2.toJSDate() : new Date(date2);
+    element:         dummy,
+    parentEl:        els.calContainer,
+    inlineMode:      true,
+    singleMode:      false,
+    numberOfMonths:  window.innerWidth < 640 ? 1 : 2,
+    numberOfColumns: window.innerWidth < 640 ? 1 : 2,
+    format:          'YYYY-MM-DD',
+    minDate:         new Date(),
+    onSelect(d1, d2) {
+      applyPickerDates(d1, d2);
+    }
+  });
 
-      els.checkin.value = formatDate(checkIn);
-      els.checkout.value = formatDate(checkOut);
-
-      const nights = calculateNights(checkIn, checkOut);
-      const tentType = els.tentType ? els.tentType.value : "";
-      updatePricePreview(tentType, nights);
-
-      const dateErr = document.querySelector('.form-error[data-field="dates"]');
-      if (dateErr) {
-        dateErr.textContent = "";
-        dateErr.classList.remove("visible");
-      }
-    },
+  picker.on('selected', (d1, d2) => {
+    applyPickerDates(d1, d2);
   });
 }
 
 /* =========================================
-   Step 3 — Price Preview
+   Tent radio change — reload calendar
    ========================================= */
-
-function updatePricePreview(tentType, nights) {
-  if (!els.pricePreview) return;
-
-  if (!nights || nights < 1 || !tentType || !PRICES[tentType]) {
-    els.pricePreview.classList.remove("visible");
-    return;
-  }
-
-  const rate = PRICES[tentType];
-  const total = rate * nights;
-  const nightWord = getTranslation("booking.form.nights", "nights");
-
-  els.pricePreview.classList.add("visible");
-  els.pricePreview.innerHTML = `
-    <div class="price-preview__row">
-      <span>${nights} ${nightWord} × €${rate}/night</span>
-    </div>
-    <div class="price-preview__total">
-      <span>${getTranslation("booking.form.price", "Estimated Total")}</span>
-      <span>€${total}</span>
-    </div>`;
+function onTentChange() {
+  const tent = getTentValue();
+  initCalendar();
+  // Reset dates
+  if (els.checkin)  els.checkin.value  = '';
+  if (els.checkout) els.checkout.value = '';
+  const ciEl     = document.getElementById('checkin-display');
+  const coEl     = document.getElementById('checkout-display');
+  const nightsEl = document.getElementById('display-nights');
+  if (ciEl)     ciEl.textContent          = '—';
+  if (coEl)     coEl.textContent          = '—';
+  if (nightsEl) { nightsEl.textContent    = ''; nightsEl.style.display = 'none'; }
 }
 
 /* =========================================
-   Step 4 — Tent Type Change Handler
+   Counter buttons (+ / −)
    ========================================= */
-
-function getSelectedNights() {
-  if (
-    !els.checkin ||
-    !els.checkout ||
-    !els.checkin.value ||
-    !els.checkout.value
-  )
-    return 0;
-  return calculateNights(
-    parseDate(els.checkin.value),
-    parseDate(els.checkout.value),
-  );
-}
-
-async function handleTentTypeChange() {
-  const tentType = els.tentType ? els.tentType.value : "";
-  if (!tentType) return;
-
-  setLoadingOverlay(true);
-  try {
-    const bookings = await fetchBookedDates(tentType);
-    const disabledDates = expandDisabledDates(bookings);
-    initCalendar(disabledDates);
-  } catch (err) {
-    showGlobalError(err.message);
-  } finally {
-    setLoadingOverlay(false);
-  }
-
-  updatePricePreview(tentType, getSelectedNights());
+function initCounters() {
+  document.querySelectorAll('.counter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      if (!input) return;
+      const min   = Number(input.min ?? 0);
+      const max   = Number(input.max ?? 99);
+      const delta = Number(btn.dataset.delta);
+      const val   = Math.min(max, Math.max(min, Number(input.value) + delta));
+      input.value = val;
+    });
+  });
 }
 
 /* =========================================
-   Step 5 — Form Validation
+   WhatsApp submit
    ========================================= */
-
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function validateForm() {
-  const errors = {};
-  const tentType = els.tentType ? els.tentType.value : "";
-  const checkIn = els.checkin ? els.checkin.value : "";
-  const checkOut = els.checkout ? els.checkout.value : "";
-  const adults = els.adults ? Number(els.adults.value) : 0;
-  const children = els.children ? Number(els.children.value) : 0;
-  const name = els.name ? els.name.value.trim() : "";
-  const email = els.email ? els.email.value.trim() : "";
-  const phone = els.phone ? els.phone.value.trim() : "";
-
-  if (!tentType) errors.tentType = "Please select a tent type.";
-
-  if (!checkIn || !checkOut) {
-    errors.dates = getTranslation(
-      "booking.error.dates",
-      "Please select check-in and check-out dates.",
-    );
-  } else if (parseDate(checkOut) <= parseDate(checkIn)) {
-    errors.dates = "Check-out date must be after check-in date.";
-  }
-
-  if (!adults || adults < 1) errors.adults = "At least one adult is required.";
-
-  if (
-    tentType &&
-    MAX_GUESTS[tentType] &&
-    adults + children > MAX_GUESTS[tentType]
-  ) {
-    errors.guests = `Maximum ${MAX_GUESTS[tentType]} guests allowed for this tent.`;
-  }
-
-  if (!name) errors.name = "Please enter your full name.";
-  if (!email) errors.email = "Please enter your email address.";
-  else if (!isValidEmail(email))
-    errors.email = "Please enter a valid email address.";
-  if (!phone) errors.phone = "Please enter your phone number.";
-
-  clearFieldErrors();
-  Object.keys(errors).forEach((field) => showFieldError(field, errors[field]));
-
-  return { valid: Object.keys(errors).length === 0, errors };
-}
-
-/* =========================================
-   Step 6 — Conflict Check (race condition guard)
-   ========================================= */
-
-async function checkConflict(tentType, checkIn, checkOut) {
-  if (!supabase) throw new Error("Supabase client is not available.");
-
-  const { data, error } = await supabase
-    .from("bookings")
-    .select("check_in, check_out")
-    .eq("status", "confirmed")
-    .eq("tent_type", tentType);
-
-  if (error) throw new Error(`Failed to check availability: ${error.message}`);
-
-  return (data || []).some(
-    (existing) => existing.check_in < checkOut && existing.check_out > checkIn,
-  );
-}
-
-/* =========================================
-   Step 7 — WhatsApp Message + Form Submit
-   ========================================= */
-
-function buildWhatsAppMessage(booking, nights, total) {
-  const specialReq = booking.special_req || "None";
-  const tentLabel =
-    booking.tent_type === "traditional"
-      ? "Traditional Berber Tent"
-      : "Luxury Glamping Tent";
-
-  return (
-    `🏕️ New Booking Request – Sahara Camp\n\n` +
-    `👤 Guest: ${booking.guest_name}\n` +
-    `🏕️ Tent: ${tentLabel}\n` +
-    `📅 Check-in: ${booking.check_in}\n` +
-    `📅 Check-out: ${booking.check_out}\n` +
-    `🌙 Nights: ${nights}\n` +
-    `👥 Adults: ${booking.adults} | Children: ${booking.children}\n` +
-    `📞 Phone: ${booking.phone}\n` +
-    `📧 Email: ${booking.email}\n` +
-    `💬 Requests: ${specialReq}\n` +
-    `💰 Estimated: €${total}\n\n` +
-    `🔑 Booking ID: ${booking.id}\n\n` +
-    `✅ CONFIRM: ${CONFIRM_BASE_URL}?token=${booking.confirm_token}&action=confirm\n` +
-    `❌ DENY: ${CONFIRM_BASE_URL}?token=${booking.confirm_token}&action=deny`
-  );
-}
-
-async function handleFormSubmit(e) {
+function handleSubmit(e) {
   e.preventDefault();
   hideGlobalError();
 
-  const { valid } = validateForm();
-  if (!valid) return;
+  const tent     = getTentValue();
+  const ci       = els.checkin?.value  || '';
+  const co       = els.checkout?.value || '';
+  const adults   = Number(els.adults?.value   || 0);
+  const children = Number(els.children?.value || 0);
+  const name     = els.name?.value.trim()     || '';
+  const email    = els.email?.value.trim()    || '';
+  const phone    = els.phone?.value.trim()    || '';
+  const special  = els.specialReq?.value.trim() || '';
 
-  const tentType = els.tentType.value;
-  const checkIn = els.checkin.value;
-  const checkOut = els.checkout.value;
-  const adults = Number(els.adults.value);
-  const children = Number(els.children ? els.children.value : 0);
-  const guestName = els.name.value.trim();
-  const email = els.email.value.trim();
-  const phone = els.phone.value.trim();
-  const specialReq = els.specialReq ? els.specialReq.value.trim() : "";
+  const n         = nights(ci, co);
+  const total     = tent ? PRICES[tent] * n : 0;
+  const tentLabel = tent === 'traditional' ? 'Traditional Berber Tent' : 'Luxury Glamping Tent';
 
-  setSubmitLoading(
-    true,
-    getTranslation("booking.form.checking", "Checking availability..."),
-  );
+  const msg =
+    `🏕️ New Booking Request – Sahara Camp\n\n` +
+    `👤 Guest: ${name}\n` +
+    `🏕️ Tent: ${tentLabel}\n` +
+    `📅 Check-in: ${ci}\n` +
+    `📅 Check-out: ${co}\n` +
+    `🌙 Nights: ${n}\n` +
+    `👥 Adults: ${adults} | Children: ${children}\n` +
+    `📞 Phone: ${phone}\n` +
+    `📧 Email: ${email}\n` +
+    `💬 Requests: ${special || 'None'}\n` +
+    `💰 Estimated: €${total}\n\n` +
+    `Please reply to confirm or suggest alternative dates.`;
 
-  try {
-    const isConflict = await checkConflict(tentType, checkIn, checkOut);
-    if (isConflict) {
-      showFieldError(
-        "dates",
-        getTranslation(
-          "booking.error.conflict",
-          "These dates conflict with an existing booking.",
-        ),
-      );
-      setSubmitLoading(false);
-      return;
-    }
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
 
-    setSubmitLoading(
-      true,
-      getTranslation("booking.form.submitting", "Processing..."),
-    );
-
-    const { data, error } = await supabase
-      .from("bookings")
-      .insert({
-        tent_type: tentType,
-        check_in: checkIn,
-        check_out: checkOut,
-        adults,
-        children,
-        guest_name: guestName,
-        email,
-        phone,
-        special_req: specialReq,
-        status: "pending",
-      })
-      .select();
-
-    if (error) throw new Error(`Failed to submit booking: ${error.message}`);
-
-    const booking = (data && data[0]) || {};
-    if (!booking.id || !booking.confirm_token) {
-      throw new Error(
-        "Booking saved but confirmation token missing. Please contact us directly.",
-      );
-    }
-
-    const nights = calculateNights(parseDate(checkIn), parseDate(checkOut));
-    const total = PRICES[tentType] * nights;
-
-    const message = buildWhatsAppMessage(booking, nights, total);
-    const waURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-    window.open(waURL, "_blank");
-
-    if (els.success) els.success.classList.add("visible");
-    if (els.form) els.form.classList.add("hidden");
-  } catch (err) {
-    showGlobalError(err.message);
-  } finally {
-    setSubmitLoading(false);
-  }
+  const card = document.getElementById('booking-card');
+  if (card)         card.style.display    = 'none';
+  if (els.success)  els.success.classList.add('visible');
 }
 
 /* =========================================
-   Step 8 — Init
+   Init
    ========================================= */
+function initBooking() {
+  resolveEls();
+  initCalendar();
 
-async function initBooking() {
-  if (!window.supabase) {
-    showGlobalError("Booking system unavailable. Please try again later.");
-    return;
-  }
-  if (!window.Litepicker) {
-    showGlobalError("Booking calendar unavailable. Please try again later.");
-    return;
-  }
+  // Tent radio change
+  document.querySelectorAll('input[name="tent-type-radio"]').forEach(r => {
+    r.addEventListener('change', onTentChange);
+  });
 
-  setLoadingOverlay(true);
-  try {
-    const bookings = await fetchBookedDates();
-    const disabledDates = expandDisabledDates(bookings);
-    initCalendar(disabledDates);
-  } catch (err) {
-    showGlobalError(err.message);
-  } finally {
-    setLoadingOverlay(false);
-  }
+  // Counter buttons
+  initCounters();
 
-  if (els.tentType)
-    els.tentType.addEventListener("change", handleTentTypeChange);
-  if (els.adults)
-    els.adults.addEventListener("input", () =>
-      updatePricePreview(els.tentType?.value, getSelectedNights()),
-    );
-  if (els.children)
-    els.children.addEventListener("input", () =>
-      updatePricePreview(els.tentType?.value, getSelectedNights()),
-    );
-  if (els.form) els.form.addEventListener("submit", handleFormSubmit);
+  // Step navigation
+  document.getElementById('step1-next')?.addEventListener('click', () => {
+    clearErrors();
+    if (validateStep1()) goToStep(2);
+  });
+  document.getElementById('step2-back')?.addEventListener('click', () => goToStep(1));
+  document.getElementById('step2-next')?.addEventListener('click', () => {
+    clearErrors();
+    if (validateStep2()) { populateSummary(); goToStep(3); }
+  });
+  document.getElementById('step3-back')?.addEventListener('click', () => goToStep(2));
+
+  // Form submit (step 3 button)
+  els.form?.addEventListener('submit', handleSubmit);
 }
 
-document.addEventListener("DOMContentLoaded", initBooking);
+document.addEventListener('DOMContentLoaded', initBooking);

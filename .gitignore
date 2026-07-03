@@ -8,11 +8,6 @@ Thumbs.db
 *.swp
 *.swo
 
-# Supabase CLI local files
-supabase/.branches
-supabase/.temp
-supabase/config.toml
-
 # Node (if you ever add a build step)
 node_modules/
 npm-debug.log*

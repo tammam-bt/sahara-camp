@@ -87,7 +87,7 @@ window.TRANSLATIONS = {
     booking: {
       title: "Book Your Stay",
       subtitle:
-        "Choose your tent, select your dates, and send your request. We will confirm your booking via WhatsApp.",
+        "Choose your tent, select your dates, and send your request. We will confirm availability and your booking via WhatsApp.",
       form: {
         tentType: "Tent Type",
         tentTypePlaceholder: "Select a tent",
@@ -106,21 +106,24 @@ window.TRANSLATIONS = {
         price: "Estimated Total",
         nights: "nights",
         submit: "Request Booking via WhatsApp",
-        submitting: "Processing...",
-        checking: "Checking availability...",
       },
       success: {
         title: "Request Sent!",
         desc: "WhatsApp has been opened with your booking details. Sahara Camp will reply shortly to confirm availability and finalize your stay.",
       },
       error: {
-        dates: "Selected dates are no longer available.",
         validation: "Please fill in all required fields.",
-        conflict: "These dates conflict with an existing booking.",
+        tentType: "Please select a tent type.",
+        dates: "Please select your check-in and check-out dates.",
+        adults: "At least one adult is required.",
+        guests: "Max {max} guests for this tent.",
+        name: "Please enter your full name.",
+        email: "Please enter your email address.",
+        emailInvalid: "Please enter a valid email address.",
+        phone: "Please enter your phone number.",
       },
       legend: {
         available: "Available",
-        booked: "Booked",
         selected: "Selected",
       },
     },
@@ -226,7 +229,7 @@ window.TRANSLATIONS = {
     booking: {
       title: "Réservez votre séjour",
       subtitle:
-        "Choisissez votre tente, sélectionnez vos dates et envoyez votre demande. Nous confirmerons votre réservation par WhatsApp.",
+        "Choisissez votre tente, sélectionnez vos dates et envoyez votre demande. Nous confirmerons les disponibilités et votre réservation par WhatsApp.",
       form: {
         tentType: "Type de tente",
         tentTypePlaceholder: "Sélectionnez une tente",
@@ -245,22 +248,24 @@ window.TRANSLATIONS = {
         price: "Total estimé",
         nights: "nuits",
         submit: "Demander la réservation via WhatsApp",
-        submitting: "Traitement en cours...",
-        checking: "Vérification des disponibilités...",
       },
       success: {
         title: "Demande envoyée !",
         desc: "WhatsApp s'est ouvert avec les détails de votre réservation. Sahara Camp vous répondra sous peu pour confirmer les disponibilités et finaliser votre séjour.",
       },
       error: {
-        dates: "Les dates sélectionnées ne sont plus disponibles.",
         validation: "Veuillez remplir tous les champs obligatoires.",
-        conflict:
-          "Ces dates entrent en conflit avec une réservation existante.",
+        tentType: "Veuillez sélectionner un type de tente.",
+        dates: "Veuillez sélectionner vos dates d'arrivée et de départ.",
+        adults: "Au moins un adulte est requis.",
+        guests: "Maximum {max} personnes pour cette tente.",
+        name: "Veuillez saisir votre nom complet.",
+        email: "Veuillez saisir votre adresse e-mail.",
+        emailInvalid: "Veuillez saisir une adresse e-mail valide.",
+        phone: "Veuillez saisir votre numéro de téléphone.",
       },
       legend: {
         available: "Disponible",
-        booked: "Réservé",
         selected: "Sélectionné",
       },
     },
@@ -367,7 +372,7 @@ window.TRANSLATIONS = {
     booking: {
       title: "Ihren Aufenthalt buchen",
       subtitle:
-        "Wählen Sie Ihr Zelt, Ihre Daten und senden Sie uns Ihre Anfrage. Wir bestätigen Ihre Buchung per WhatsApp.",
+        "Wählen Sie Ihr Zelt, Ihre Daten und senden Sie uns Ihre Anfrage. Wir bestätigen Verfügbarkeit und Ihre Buchung per WhatsApp.",
       form: {
         tentType: "Zelttyp",
         tentTypePlaceholder: "Wählen Sie ein Zelt",
@@ -386,22 +391,24 @@ window.TRANSLATIONS = {
         price: "Geschätzte Gesamtkosten",
         nights: "Nächte",
         submit: "Buchungsanfrage via WhatsApp",
-        submitting: "Wird verarbeitet...",
-        checking: "Verfügbarkeit prüfen...",
       },
       success: {
         title: "Anfrage gesendet!",
         desc: "WhatsApp wurde mit Ihren Buchungsdetails geöffnet. Sahara Camp wird in Kürze antworten, um die Verfügbarkeit zu bestätigen und Ihren Aufenthalt abzuschließen.",
       },
       error: {
-        dates: "Die gewählten Daten sind nicht mehr verfügbar.",
         validation: "Bitte füllen Sie alle Pflichtfelder aus.",
-        conflict:
-          "Diese Daten überschneiden sich mit einer bestehenden Buchung.",
+        tentType: "Bitte wählen Sie einen Zelttyp.",
+        dates: "Bitte wählen Sie Ihr An- und Abreisedatum.",
+        adults: "Mindestens ein Erwachsener ist erforderlich.",
+        guests: "Maximal {max} Gäste für dieses Zelt.",
+        name: "Bitte geben Sie Ihren vollständigen Namen ein.",
+        email: "Bitte geben Sie Ihre E-Mail-Adresse ein.",
+        emailInvalid: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        phone: "Bitte geben Sie Ihre Telefonnummer ein.",
       },
       legend: {
         available: "Verfügbar",
-        booked: "Gebucht",
         selected: "Ausgewählt",
       },
     },
@@ -506,7 +513,7 @@ window.TRANSLATIONS = {
     booking: {
       title: "Забронировать проживание",
       subtitle:
-        "Выберите палатку, укажите даты и отправьте запрос. Мы подтвердим ваше бронирование через WhatsApp.",
+        "Выберите палатку, укажите даты и отправьте запрос. Мы подтвердим наличие мест и ваше бронирование через WhatsApp.",
       form: {
         tentType: "Тип палатки",
         tentTypePlaceholder: "Выберите палатку",
@@ -525,21 +532,24 @@ window.TRANSLATIONS = {
         price: "Ориентировочная стоимость",
         nights: "ночей",
         submit: "Отправить запрос через WhatsApp",
-        submitting: "Обработка...",
-        checking: "Проверка доступности...",
       },
       success: {
         title: "Запрос отправлен!",
         desc: "WhatsApp открыт с деталями вашего бронирования. Абдельмула вскоре ответит, чтобы подтвердить наличие мест и завершить оформление вашего проживания.",
       },
       error: {
-        dates: "Выбранные даты больше недоступны.",
         validation: "Пожалуйста, заполните все обязательные поля.",
-        conflict: "Эти даты конфликтуют с существующим бронированием.",
+        tentType: "Пожалуйста, выберите тип палатки.",
+        dates: "Пожалуйста, выберите даты заезда и выезда.",
+        adults: "Необходим хотя бы один взрослый.",
+        guests: "Максимум {max} гостей для этой палатки.",
+        name: "Пожалуйста, укажите ваше полное имя.",
+        email: "Пожалуйста, укажите ваш адрес электронной почты.",
+        emailInvalid: "Пожалуйста, укажите корректный адрес электронной почты.",
+        phone: "Пожалуйста, укажите ваш номер телефона.",
       },
       legend: {
         available: "Доступно",
-        booked: "Забронировано",
         selected: "Выбрано",
       },
     },
@@ -643,7 +653,7 @@ window.TRANSLATIONS = {
     booking: {
       title: "احجز إقامتك",
       subtitle:
-        "اختر خيمتك، حدّد تواريخك، وأرسل طلبك. سنتواصل معك عبر واتساب لتأكيد الحجز.",
+        "اختر خيمتك، حدّد تواريخك، وأرسل طلبك. سنتواصل معك عبر واتساب للتأكد من التوفر وتأكيد الحجز.",
       form: {
         tentType: "نوع الخيمة",
         tentTypePlaceholder: "اختر خيمة",
@@ -661,21 +671,24 @@ window.TRANSLATIONS = {
         price: "الإجمالي التقديري",
         nights: "ليالٍ",
         submit: "أرسل طلب الحجز عبر واتساب",
-        submitting: "جاري المعالجة...",
-        checking: "جاري التحقق من التوفر...",
       },
       success: {
         title: "تم إرسال الطلب!",
         desc: "تم فتح واتساب مع تفاصيل حجزك. سيردّ عليك عبد المولا قريبًا للتأكد من التوفر وإتمام إقامتك.",
       },
       error: {
-        dates: "التواريخ المختارة لم تعد متوفرة.",
         validation: "يرجى ملء جميع الحقول المطلوبة.",
-        conflict: "هذه التواريخ تتعارض مع حجز موجود.",
+        tentType: "يرجى اختيار نوع الخيمة.",
+        dates: "يرجى اختيار تاريخ الوصول والمغادرة.",
+        adults: "يلزم وجود شخص بالغ واحد على الأقل.",
+        guests: "الحد الأقصى {max} ضيوف لهذه الخيمة.",
+        name: "يرجى إدخال اسمك الكامل.",
+        email: "يرجى إدخال عنوان بريدك الإلكتروني.",
+        emailInvalid: "يرجى إدخال عنوان بريد إلكتروني صالح.",
+        phone: "يرجى إدخال رقم هاتفك.",
       },
       legend: {
         available: "متاح",
-        booked: "محجوز",
         selected: "مُختار",
       },
     },
