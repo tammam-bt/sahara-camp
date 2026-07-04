@@ -2,7 +2,7 @@
 
 Static single-page marketing and booking website for **Sahara Camp**, a desert glamping experience in Tembaine, Douz, Tunisia.
 
-**Live site:** [https://sahara-camp.com](https://sahara-camp.com)
+**Live site:** [https://saharacamp.netlify.app/](https://saharacamp.netlify.app/)
 
 ---
 
