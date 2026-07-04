@@ -127,7 +127,16 @@ const MobileMenu = {
 
     if (!this.hamburger || !this.menu) return;
 
-    this.hamburger.addEventListener('click', () => this.open());
+    // Toggle open/close on hamburger click
+    this.hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (this.menu.classList.contains('open')) {
+        this.closeMenu();
+      } else {
+        this.open();
+      }
+    });
+
     if (this.close) this.close.addEventListener('click', () => this.closeMenu());
 
     // Close on nav link click
