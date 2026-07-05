@@ -27,7 +27,7 @@ window.IMAGES = {
      Recommended: portrait or square orientation
   ---------------------------------------------------------- */
   about:
-    "https://images.unsplash.com/photo-1761888351161-c3beb14e9377?q=80&w=800&auto=format&fit=crop",
+    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/183625147.jpg?k=a263e5056bd633c32dfad2876a49a8e5db835c165d0a6226e6687273ba524035&o=",
 
   /* ----------------------------------------------------------
      ACCOMMODATION — tent card photos
