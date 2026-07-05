@@ -26,14 +26,15 @@ window.IMAGES = {
      ABOUT — photo next to the camp story text
      Recommended: portrait or square orientation
   ---------------------------------------------------------- */
-  about: "https://images.unsplash.com/photo-1761888351161-c3beb14e9377?q=80&w=800&auto=format&fit=crop",
+  about:
+    "https://images.unsplash.com/photo-1761888351161-c3beb14e9377?q=80&w=800&auto=format&fit=crop",
 
   /* ----------------------------------------------------------
      ACCOMMODATION — tent card photos
   ---------------------------------------------------------- */
   tents: {
     traditional:
-      "https://images.unsplash.com/photo-1527736848781-72dc3b2ee00f?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1677959587685-6b43720d3c5d?q=90&w=1600&auto=format&fit=crop",
     glamping:
       "https://images.unsplash.com/photo-1757438059221-5f2dede2c318?q=80&w=800&auto=format&fit=crop",
   },
@@ -46,8 +47,7 @@ window.IMAGES = {
   gallery: [
     {
       // Desert camp at dusk with tents and lanterns
-      thumb:
-        "https://images.unsplash.com/photo-1761888351161-c3beb14e9377?q=80&w=800&auto=format&fit=crop",
+      thumb: "https://images.unsplash.com/photo-1761888351161-c3beb14e9377?",
       full: "https://images.unsplash.com/photo-1761888351161-c3beb14e9377?q=90&w=1600&auto=format&fit=crop",
       alt: "Sahara Camp — desert camp at dusk with tents and lanterns",
       caption: "Our Camp in the Desert",
@@ -75,14 +75,6 @@ window.IMAGES = {
       full: "https://images.unsplash.com/photo-1622489968558-9bf6f30dcb2a?q=90&w=1600&auto=format&fit=crop",
       alt: "Vast Sahara desert dunes stretching to the horizon",
       caption: "Endless Dunes",
-    },
-    {
-      // Desert caravan at golden hour
-      thumb:
-        "https://images.unsplash.com/photo-1677959587685-6b43720d3c5d?q=80&w=800&auto=format&fit=crop",
-      full: "https://images.unsplash.com/photo-1677959587685-6b43720d3c5d?q=90&w=1600&auto=format&fit=crop",
-      alt: "Group riding camels through the Sahara at golden hour",
-      caption: "Desert Caravan",
     },
     {
       // Sahara dune scene
