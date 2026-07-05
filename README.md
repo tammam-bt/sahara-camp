@@ -209,6 +209,56 @@ window.IMAGES = {
 
 ---
 
+## Screenshots
+
+Below are screenshots of the key sections of the Sahara Camp website.
+
+### Hero Section
+![Hero Section](images/Screenshots/1-Hero.png)
+The hero section welcomes visitors with a full-screen desert view and the camp's headline.
+
+### About Section
+![About Section](images/Screenshots/2-About%20section.png)
+The about section tells the story of Sahara Camp and its location in the Tembaine dunes near Douz.
+
+### Tent Selection
+![Tent Selection](images/Screenshots/3-%20Tent%20Selection.png)
+The accommodation section presents the two tent options: traditional Berber tents and luxury glamping tents.
+
+### Sahara Activities
+![Sahara Activities](images/Screenshots/4-%20Sahara%20activites.png)
+The activities section highlights desert experiences such as camel rides, sandboarding, and campfires.
+
+### Photo Gallery
+![Photo Gallery](images/Screenshots/5-%20Photo%20Gallery.png)
+The gallery showcases the camp and surrounding desert through a masonry image grid with lightbox support.
+
+### Booking Form — Step 1
+![Booking Form Step 1](images/Screenshots/6-%20Booking%20form%20step1.png)
+Step 1 of the booking flow asks guests to choose a tent and select their dates.
+
+### Booking Form — Step 2
+![Booking Form Step 2](images/Screenshots/7-%20Booking%20form%20step2.png)
+Step 2 collects guest details and contact information for the reservation.
+
+### Booking Form — Step 3
+![Booking Form Step 3](images/Screenshots/7-Booking%20form%20step3.png)
+Step 3 shows a summary of the booking for review before it is submitted.
+
+### WhatsApp Booking Message
+![WhatsApp Booking Message](images/Screenshots/8-%20Booking%20message%20on%20whatsapp.png)
+After submitting the form, the booking details are sent as a pre-filled WhatsApp message to the camp.
+
+### Location and Details
+![Location and Details](images/Screenshots/9-%20Google%20Maps%20location%20with%20details%20card.png)
+The location section embeds Google Maps and displays the camp's contact details card.
+
+### Footer
+![Footer](images/Screenshots/10-%20Footer.png)
+The footer contains useful links, the language switcher, and the WhatsApp contact button.
+
+---
+
 ## License
 
 This project is proprietary and operated by Sahara Camp. All rights reserved.
