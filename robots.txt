@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sahara-camp.com/sitemap.xml
+Sitemap: https://saharacamp.netlify.app/sitemap.xml
