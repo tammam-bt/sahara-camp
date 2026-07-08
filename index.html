@@ -32,8 +32,10 @@
   <!-- Hreflang — single URL with client-side language switching -->
   <link rel="alternate" hreflang="x-default" href="https://saharacamp.netlify.app/" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏕️</text></svg>" />
+  <!-- Favicon — explicit PNG to override Netlify's default globe icon in search results -->
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="48x48" />
+  <link rel="shortcut icon" type="image/png" href="/favicon.png" sizes="48x48" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
 
   <!-- Preload critical assets -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -75,6 +77,17 @@
       { "@type": "LocationFeatureSpecification", "name": "Stargazing", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "4x4 Excursions", "value": true }
     ]
+  }
+  </script>
+
+  <!-- WebSite Structured Data — declares site name for Google search snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Sahara Camp",
+    "alternateName": "Sahara Camp — Desert Camp in Tunisia",
+    "url": "https://saharacamp.netlify.app/"
   }
   </script>
 </head>
