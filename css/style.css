@@ -2524,6 +2524,13 @@ footer {
     max-width: 540px;
     margin: 0 auto;
   }
+  /* Long translated badges/labels must wrap instead of widening the page */
+  .about__grid > * {
+    min-width: 0;
+  }
+  .about__badges .badge {
+    white-space: normal;
+  }
 
   .footer__grid {
     grid-template-columns: 1fr 1fr;
@@ -2745,7 +2752,6 @@ footer {
   right: 1.5rem;
   z-index: 1000;
   font-family: var(--font-body);
-  direction: ltr;
 }
 
 [dir="rtl"] .chatbot-widget {
@@ -2955,6 +2961,9 @@ footer {
 }
 
 .chatbot__accordion-title {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-sand);
@@ -3084,6 +3093,10 @@ footer {
   font-size: 0.8rem;
   border-radius: var(--radius-sm);
   flex-shrink: 0;
+}
+
+.chatbot__back {
+  width: auto;
 }
 
 .chatbot__back:hover {

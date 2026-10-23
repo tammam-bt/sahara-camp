@@ -43,6 +43,8 @@ window.IMAGES = {
      GALLERY — 8 photos shown in the masonry grid
      'thumb' is shown in the grid, 'full' opens in the lightbox.
      To add more photos, duplicate any entry block.
+     'alt' / 'caption' are English fallbacks; altKey / captionKey point to
+     the translated text in js/translations.js (gallery.items.*).
   ---------------------------------------------------------- */
   gallery: [
     {
@@ -51,6 +53,8 @@ window.IMAGES = {
       full: "https://images.unsplash.com/photo-1761888351161-c3beb14e9377?q=90&w=1600&auto=format&fit=crop",
       alt: "Sahara Camp — desert camp at dusk with tents and lanterns",
       caption: "Our Camp in the Desert",
+      altKey: "gallery.items.camp.alt",
+      captionKey: "gallery.items.camp.caption",
     },
     {
       // Camel caravan at golden hour
@@ -59,6 +63,8 @@ window.IMAGES = {
       full: "https://images.unsplash.com/photo-1535191198992-fe460a2d0af1?q=90&w=1600&auto=format&fit=crop",
       alt: "Camel caravan crossing the Sahara at golden hour",
       caption: "Camel Trekking Adventure",
+      altKey: "gallery.items.camel.alt",
+      captionKey: "gallery.items.camel.caption",
     },
     {
       // Camel trekking at sunset
@@ -67,6 +73,8 @@ window.IMAGES = {
       full: "https://plus.unsplash.com/premium_photo-1661962542692-4fe7a4ad6b54?q=90&w=1600&auto=format&fit=crop",
       alt: "Camel trekking through the Sahara desert at sunset",
       caption: "Camel riding at sunset",
+      altKey: "gallery.items.sunset.alt",
+      captionKey: "gallery.items.sunset.caption",
     },
     {
       // Vast desert dunes
@@ -75,6 +83,8 @@ window.IMAGES = {
       full: "https://images.unsplash.com/photo-1622489968558-9bf6f30dcb2a?q=90&w=1600&auto=format&fit=crop",
       alt: "Vast Sahara desert dunes stretching to the horizon",
       caption: "Endless Dunes",
+      altKey: "gallery.items.dunes.alt",
+      captionKey: "gallery.items.dunes.caption",
     },
     {
       // Sahara dune scene
@@ -83,6 +93,8 @@ window.IMAGES = {
       full: "https://images.unsplash.com/photo-1708007004190-2c1286bd392e?q=90&w=1600&auto=format&fit=crop",
       alt: "Chatt Jerid scenery",
       caption: "Chatt Jerid",
+      altKey: "gallery.items.chott.alt",
+      captionKey: "gallery.items.chott.caption",
     },
     {
       // Campfire under the stars
@@ -91,6 +103,8 @@ window.IMAGES = {
       full: "https://images.unsplash.com/photo-1613169660691-f0e9603b74d0?q=90&w=1600&auto=format&fit=crop",
       alt: "Dinner around a campfire under the starry desert sky",
       caption: "Campfires & Stars",
+      altKey: "gallery.items.campfire.alt",
+      captionKey: "gallery.items.campfire.caption",
     },
     {
       // Oasis with desert tents
@@ -99,6 +113,8 @@ window.IMAGES = {
       full: "https://images.unsplash.com/photo-1527736848781-72dc3b2ee00f?q=90&w=1600&auto=format&fit=crop",
       alt: "Oasis scenery with desert tents and palm trees",
       caption: "Oasis scenes",
+      altKey: "gallery.items.oasis.alt",
+      captionKey: "gallery.items.oasis.caption",
     },
   ],
 };

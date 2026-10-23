@@ -44,10 +44,10 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" /></noscript>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
 
   <!-- Litepicker CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker@2.0.12/dist/css/litepicker.css" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -97,13 +97,13 @@
   <!-- ============================================================
        NAVBAR
        ============================================================ -->
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
+  <nav id="navbar" role="navigation" aria-label="Main navigation" data-i18n-aria-label="aria.mainNav">
     <div class="navbar__inner">
 
       <!-- Logo -->
-      <a href="#hero" class="navbar__logo" aria-label="Sahara Camp Home">
+      <a href="#hero" class="navbar__logo" aria-label="Sahara Camp Home" data-i18n-aria-label="aria.home">
         Sahara Camp
-        <span>Tembaine · Douz · Tunisia</span>
+        <span data-i18n="hero.place">Tembaine · Douz · Tunisia</span>
       </a>
 
       <!-- Desktop links -->
@@ -119,7 +119,7 @@
       <div class="navbar__right">
 
         <!-- Language Switcher -->
-        <div class="lang-switcher" id="lang-switcher" role="navigation" aria-label="Language selector">
+        <div class="lang-switcher" id="lang-switcher" role="navigation" aria-label="Language selector" data-i18n-aria-label="aria.langSelector">
           <button class="lang-switcher__btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false">
             <svg class="lang-switcher__icon" viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/>
@@ -142,7 +142,7 @@
         <a href="#booking" class="btn btn--outline btn--sm" data-i18n="hero.cta">Book Your Stay</a>
 
         <!-- Hamburger (mobile) -->
-        <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-menu">
           <span></span>
           <span></span>
           <span></span>
@@ -152,8 +152,8 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <div class="navbar__mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-    <button class="navbar__mobile-close" id="mobile-close" aria-label="Close menu">&times;</button>
+  <div class="navbar__mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" data-i18n-aria-label="aria.mobileNav">
+    <button class="navbar__mobile-close" id="mobile-close" aria-label="Close menu" data-i18n-aria-label="aria.closeMenu">&times;</button>
 
     <a href="#about"         class="navbar__mobile-link" data-i18n="nav.about">About</a>
     <a href="#accommodation" class="navbar__mobile-link" data-i18n="nav.accommodation">Accommodation</a>
@@ -174,7 +174,7 @@
   <!-- ============================================================
        HERO
        ============================================================ -->
-  <section id="hero" aria-label="Hero">
+  <section id="hero" aria-label="Hero" data-i18n-aria-label="aria.hero">
 
     <!-- Background image — URL controlled by js/images.js → hero key -->
     <div class="hero__bg" id="hero-bg" data-img-key="hero"></div>
@@ -182,7 +182,7 @@
     <div class="hero__overlay" aria-hidden="true"></div>
 
     <div class="hero__content">
-      <p class="hero__eyebrow">Tembaine · Douz · Tunisia</p>
+      <p class="hero__eyebrow" data-i18n="hero.place">Tembaine · Douz · Tunisia</p>
       <h1 class="hero__tagline" data-i18n="hero.tagline">Where the Sahara Speaks</h1>
       <p class="hero__subtitle" data-i18n="hero.subtitle">
         Discover silence, stars, and timeless Berber hospitality in the golden dunes of Tembaine.
@@ -193,7 +193,7 @@
       </div>
     </div>
 
-    <a href="#about" class="hero__scroll" aria-label="Scroll down">
+    <a href="#about" class="hero__scroll" aria-label="Scroll down" data-i18n-aria-label="aria.scrollDown">
       <span class="hero__scroll-label" data-i18n="hero.scroll">Scroll to explore</span>
       <span class="hero__scroll-arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -233,7 +233,7 @@
 
         <!-- Text -->
         <div class="about__content animate-on-scroll">
-          <span class="section__eyebrow">Our Story</span>
+          <span data-i18n="about.eyebrow" class="section__eyebrow">Our Story</span>
           <h2 id="about-title" data-i18n="about.title">About Sahara Camp</h2>
           <p class="about__text" data-i18n="about.p1">
             Nestled among the rolling dunes of Tembaine, near Douz in the Kebili Governorate of southern Tunisia,
@@ -252,15 +252,15 @@
           <div class="about__stats">
             <div>
               <span class="about__stat-number">20+</span>
-              <span class="about__stat-label">Years of hospitality</span>
+              <span data-i18n="about.stat1" class="about__stat-label">Years of hospitality</span>
             </div>
             <div>
               <span class="about__stat-number">5★</span>
-              <span class="about__stat-label">Guest reviews</span>
+              <span data-i18n="about.stat2" class="about__stat-label">Guest reviews</span>
             </div>
             <div>
               <span class="about__stat-number">∞</span>
-              <span class="about__stat-label">Stars overhead</span>
+              <span data-i18n="about.stat3" class="about__stat-label">Stars overhead</span>
             </div>
           </div>
 
@@ -288,7 +288,7 @@
     <div class="container">
 
       <div class="section__header animate-on-scroll">
-        <span class="section__eyebrow">Choose Your Shelter</span>
+        <span data-i18n="accommodation.eyebrow" class="section__eyebrow">Choose Your Shelter</span>
         <h2 id="accommodation-title" data-i18n="accommodation.title">Your Desert Retreat</h2>
         <p data-i18n="accommodation.subtitle">Sleep beneath the stars in comfort, surrounded by the quiet majesty of the dunes.</p>
       </div>
@@ -306,7 +306,7 @@
               width="800"
               height="560"
             />
-            <span class="tent-card__badge">Most Authentic</span>
+            <span data-i18n="accommodation.badgeAuthentic" class="tent-card__badge">Most Authentic</span>
           </div>
           <div class="tent-card__content">
             <h3 class="tent-card__title" id="tent-traditional-title" data-i18n="accommodation.traditional.name">Traditional Berber Tent</h3>
@@ -321,7 +321,7 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               <span data-i18n="accommodation.traditional.capacity">Up to 2 guests</span>
             </div>
-            <div class="tent-card__amenities" aria-label="Amenities">
+            <div class="tent-card__amenities" aria-label="Amenities" data-i18n-aria-label="aria.amenities">
               <span class="amenity-pill">
                 <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 <span data-i18n="accommodation.amenities.bed">Comfortable beds</span>
@@ -354,7 +354,7 @@
               width="800"
               height="560"
             />
-            <span class="tent-card__badge">Most Popular</span>
+            <span data-i18n="accommodation.badgePopular" class="tent-card__badge">Most Popular</span>
           </div>
           <div class="tent-card__content">
             <h3 class="tent-card__title" id="tent-glamping-title" data-i18n="accommodation.glamping.name">Luxury Glamping Tent</h3>
@@ -369,7 +369,7 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               <span data-i18n="accommodation.glamping.capacity">Up to 4 guests</span>
             </div>
-            <div class="tent-card__amenities" aria-label="Amenities">
+            <div class="tent-card__amenities" aria-label="Amenities" data-i18n-aria-label="aria.amenities">
               <span class="amenity-pill">
                 <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 <span data-i18n="accommodation.amenities.bed">Comfortable beds</span>
@@ -423,7 +423,7 @@
     <div class="container">
 
       <div class="section__header animate-on-scroll">
-        <span class="section__eyebrow">Explore the Desert</span>
+        <span data-i18n="activities.eyebrow" class="section__eyebrow">Explore the Desert</span>
         <h2 id="activities-title" data-i18n="activities.title">Desert Experiences</h2>
         <p data-i18n="activities.subtitle">Explore the Sahara with guided activities designed for wonder, adventure, and connection.</p>
       </div>
@@ -516,24 +516,24 @@
     <div class="container">
 
       <div class="section__header animate-on-scroll">
-        <span class="section__eyebrow">Visual Journey</span>
+        <span data-i18n="gallery.eyebrow" class="section__eyebrow">Visual Journey</span>
         <h2 id="gallery-title" data-i18n="gallery.title">Gallery</h2>
         <p data-i18n="gallery.subtitle">Moments of light, sand, and serenity captured at Sahara Camp.</p>
       </div>
 
       <!-- Gallery items injected by main.js from js/images.js → gallery array -->
-      <div class="gallery-grid" id="gallery-grid" role="list" aria-label="Photo gallery"></div>
+      <div class="gallery-grid" id="gallery-grid" role="list" aria-label="Photo gallery" data-i18n-aria-label="aria.gallery"></div>
     </div>
   </section>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
-    <button class="lightbox__close" id="lightbox-close" aria-label="Close lightbox">&times;</button>
-    <button class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Previous image">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox" data-i18n-aria-label="aria.lightbox">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close lightbox" data-i18n-aria-label="aria.closeLightbox">&times;</button>
+    <button class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Previous image" data-i18n-aria-label="aria.prevImage">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
     <img class="lightbox__img" id="lightbox-img" src="" alt="" />
-    <button class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Next image">
+    <button class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Next image" data-i18n-aria-label="aria.nextImage">
       <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
     <div class="lightbox__counter" id="lightbox-counter" aria-live="polite"></div>
@@ -555,7 +555,7 @@
     <div class="container">
 
       <div class="section__header animate-on-scroll">
-        <span class="section__eyebrow">Reserve Your Night</span>
+        <span data-i18n="booking.eyebrow" class="section__eyebrow">Reserve Your Night</span>
         <h2 id="booking-title" data-i18n="booking.title">Book Your Stay</h2>
         <p data-i18n="booking.subtitle">Choose your tent, pick your dates, and send your request — we confirm via WhatsApp.</p>
       </div>
@@ -569,47 +569,47 @@
         <p class="booking-success__desc" data-i18n="booking.success.desc">
           WhatsApp has been opened with your booking details. Sahara Camp will reply shortly to confirm.
         </p>
-        <button class="btn btn--primary mt-2" onclick="location.reload()">Make another booking</button>
+        <button class="btn btn--primary mt-2" onclick="location.reload()" data-i18n="booking.another">Make another booking</button>
       </div>
 
       <!-- Main booking card -->
       <div class="booking-card" id="booking-card">
 
         <!-- Step tabs -->
-        <div class="booking-steps" role="tablist" aria-label="Booking steps">
+        <div class="booking-steps" role="tablist" aria-label="Booking steps" data-i18n-aria-label="aria.bookingSteps">
           <button class="booking-step active" id="step-btn-1" role="tab" aria-selected="true"  aria-controls="step-panel-1" data-step="1">
             <span class="booking-step__num">1</span>
-            <span class="booking-step__label">Choose &amp; Dates</span>
+            <span data-i18n="booking.steps.dates" class="booking-step__label">Choose &amp; Dates</span>
           </button>
           <span class="booking-step__divider" aria-hidden="true"></span>
           <button class="booking-step" id="step-btn-2" role="tab" aria-selected="false" aria-controls="step-panel-2" data-step="2">
             <span class="booking-step__num">2</span>
-            <span class="booking-step__label">Your Details</span>
+            <span data-i18n="booking.steps.details" class="booking-step__label">Your Details</span>
           </button>
           <span class="booking-step__divider" aria-hidden="true"></span>
           <button class="booking-step" id="step-btn-3" role="tab" aria-selected="false" aria-controls="step-panel-3" data-step="3">
             <span class="booking-step__num">3</span>
-            <span class="booking-step__label">Confirm</span>
+            <span data-i18n="booking.steps.confirm" class="booking-step__label">Confirm</span>
           </button>
         </div>
 
         <div id="booking-global-error" role="alert" aria-live="assertive"></div>
 
-        <form id="booking-form" novalidate aria-label="Booking request form">
+        <form id="booking-form" novalidate aria-label="Booking request form" data-i18n-aria-label="aria.bookingForm">
 
           <!-- ── STEP 1: Tent + Calendar ────────────────────── -->
           <div class="booking-panel" id="step-panel-1" role="tabpanel" aria-labelledby="step-btn-1">
 
             <!-- Tent type selector (visual cards) -->
-            <p class="booking-panel__label">Select your accommodation</p>
+            <p data-i18n="booking.selectTent" class="booking-panel__label">Select your accommodation</p>
             <div class="tent-choice-grid">
               <label class="tent-choice" for="tent-traditional">
                 <input type="radio" id="tent-traditional" name="tent-type-radio" value="traditional" />
                 <span class="tent-choice__inner">
                   <span class="tent-choice__icon">⛺</span>
                   <span class="tent-choice__name" data-i18n="booking.form.traditional">Traditional Berber Tent</span>
-                  <span class="tent-choice__price">€45 / night</span>
-                  <span class="tent-choice__capacity">Up to 2 guests</span>
+                  <span class="tent-choice__price">€45 <span data-i18n="booking.perNight">/ night</span></span>
+                  <span data-i18n="accommodation.traditional.capacity" class="tent-choice__capacity">Up to 2 guests</span>
                 </span>
                 <span class="tent-choice__check" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
@@ -620,8 +620,8 @@
                 <span class="tent-choice__inner">
                   <span class="tent-choice__icon">🏕️</span>
                   <span class="tent-choice__name" data-i18n="booking.form.glamping">Luxury Glamping Tent</span>
-                  <span class="tent-choice__price">€90 / night</span>
-                  <span class="tent-choice__capacity">Up to 4 guests</span>
+                  <span class="tent-choice__price">€90 <span data-i18n="booking.perNight">/ night</span></span>
+                  <span data-i18n="accommodation.glamping.capacity" class="tent-choice__capacity">Up to 4 guests</span>
                 </span>
                 <span class="tent-choice__check" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
@@ -631,7 +631,7 @@
             <span class="form-error" data-field="tentType" role="alert"></span>
 
             <!-- Calendar (Litepicker inline) -->
-            <p class="booking-panel__label" style="margin-top:2rem;">Select your dates</p>
+            <p class="booking-panel__label" style="margin-top:2rem;" data-i18n="booking.selectDates">Select your dates</p>
             <div class="booking-calendar-container">
               <!-- Litepicker inline renders here; hidden inputs hold values -->
               <div id="litepicker-container"></div>
@@ -645,7 +645,7 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 <div>
                   <span class="booking-dates-display__label" data-i18n="booking.form.checkin">Check-in</span>
-                  <span class="booking-dates-display__value" id="checkin-display">—</span>
+                  <span class="booking-dates-display__value" dir="auto" id="checkin-display">—</span>
                 </div>
               </div>
               <span class="booking-dates-display__arrow" aria-hidden="true">→</span>
@@ -653,7 +653,7 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 <div>
                   <span class="booking-dates-display__label" data-i18n="booking.form.checkout">Check-out</span>
-                  <span class="booking-dates-display__value" id="checkout-display">—</span>
+                  <span class="booking-dates-display__value" dir="auto" id="checkout-display">—</span>
                 </div>
               </div>
               <div class="booking-dates-display__nights" id="display-nights"></div>
@@ -661,7 +661,7 @@
             <span class="form-error" data-field="dates" role="alert"></span>
 
             <!-- Legend -->
-            <div class="booking__legend" aria-label="Calendar legend">
+            <div class="booking__legend" aria-label="Calendar legend" data-i18n-aria-label="aria.calendarLegend">
               <div class="booking__legend-item">
                 <span class="booking__legend-swatch booking__legend-swatch--available" aria-hidden="true"></span>
                 <span data-i18n="booking.legend.available">Available</span>
@@ -674,7 +674,7 @@
 
             <div class="booking-panel__actions">
               <button type="button" class="btn btn--primary btn--lg" id="step1-next">
-                Continue to Details
+                <span data-i18n="booking.continue">Continue to Details</span>
                 <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -688,18 +688,18 @@
               <div class="form-group">
                 <label for="adults" data-i18n="booking.form.adults">Adults</label>
                 <div class="counter-input">
-                  <button type="button" class="counter-btn" data-target="adults" data-delta="-1" aria-label="Fewer adults">−</button>
+                  <button type="button" class="counter-btn" data-target="adults" data-delta="-1" aria-label="Fewer adults" data-i18n-aria-label="aria.fewerAdults">−</button>
                   <input type="number" id="adults" name="adults" min="1" max="10" value="2" required aria-required="true" readonly />
-                  <button type="button" class="counter-btn" data-target="adults" data-delta="1"  aria-label="More adults">+</button>
+                  <button type="button" class="counter-btn" data-target="adults" data-delta="1"  aria-label="More adults" data-i18n-aria-label="aria.moreAdults">+</button>
                 </div>
                 <span class="form-error" data-field="adults" role="alert"></span>
               </div>
               <div class="form-group">
                 <label for="children" data-i18n="booking.form.children">Children</label>
                 <div class="counter-input">
-                  <button type="button" class="counter-btn" data-target="children" data-delta="-1" aria-label="Fewer children">−</button>
+                  <button type="button" class="counter-btn" data-target="children" data-delta="-1" aria-label="Fewer children" data-i18n-aria-label="aria.fewerChildren">−</button>
                   <input type="number" id="children" name="children" min="0" max="10" value="0" readonly />
-                  <button type="button" class="counter-btn" data-target="children" data-delta="1"  aria-label="More children">+</button>
+                  <button type="button" class="counter-btn" data-target="children" data-delta="1"  aria-label="More children" data-i18n-aria-label="aria.moreChildren">+</button>
                 </div>
                 <span class="form-error" data-field="guests" role="alert"></span>
               </div>
@@ -709,7 +709,7 @@
             <div class="form-group">
               <label for="guest-name" data-i18n="booking.form.name">Full Name</label>
               <input type="text" id="guest-name" name="guest-name" required aria-required="true"
-                     autocomplete="name" placeholder="e.g. Sophie Müller" />
+                     autocomplete="name" placeholder="e.g. Sophie Müller" data-i18n-placeholder="booking.form.namePlaceholder" />
               <span class="form-error" data-field="name" role="alert"></span>
             </div>
 
@@ -718,7 +718,7 @@
               <div class="form-group">
                 <label for="email" data-i18n="booking.form.email">Email</label>
                 <input type="email" id="email" name="email" required aria-required="true"
-                       autocomplete="email" placeholder="sophie@example.com" />
+                       autocomplete="email" placeholder="sophie@example.com" data-i18n-placeholder="booking.form.emailPlaceholder" />
                 <span class="form-error" data-field="email" role="alert"></span>
               </div>
               <div class="form-group">
@@ -731,18 +731,18 @@
 
             <!-- Special requests -->
             <div class="form-group">
-              <label for="special-req" data-i18n="booking.form.special">Special Requests <span style="font-weight:400;opacity:0.6;">(optional)</span></label>
+              <label for="special-req"><span data-i18n="booking.form.special">Special Requests</span> <span style="font-weight:400;opacity:0.6;" data-i18n="booking.form.optional">(optional)</span></label>
               <textarea id="special-req" name="special-req" rows="3"
-                        placeholder="Dietary needs, celebration, preferred activities…"></textarea>
+                        placeholder="Dietary needs, celebration, preferred activities…" data-i18n-placeholder="booking.form.specialPlaceholder"></textarea>
             </div>
 
             <div class="booking-panel__actions">
               <button type="button" class="btn btn--outline" id="step2-back">
                 <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-                Back
+                <span data-i18n="booking.back">Back</span>
               </button>
               <button type="button" class="btn btn--primary btn--lg" id="step2-next">
-                Review &amp; Confirm
+                <span data-i18n="booking.review">Review &amp; Confirm</span>
                 <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
@@ -751,45 +751,45 @@
           <!-- ── STEP 3: Review + Submit ─────────────────────── -->
           <div class="booking-panel hidden" id="step-panel-3" role="tabpanel" aria-labelledby="step-btn-3">
 
-            <p class="booking-panel__label">Review your booking</p>
+            <p data-i18n="booking.reviewTitle" class="booking-panel__label">Review your booking</p>
 
             <!-- Summary card -->
             <div class="booking-summary">
               <div class="booking-summary__row">
-                <span class="booking-summary__key">Tent</span>
-                <span class="booking-summary__val" id="summary-tent">—</span>
+                <span data-i18n="booking.form.tentType" class="booking-summary__key">Tent</span>
+                <span class="booking-summary__val" dir="auto" id="summary-tent">—</span>
               </div>
               <div class="booking-summary__row">
                 <span class="booking-summary__key" data-i18n="booking.form.checkin">Check-in</span>
-                <span class="booking-summary__val" id="summary-checkin">—</span>
+                <span class="booking-summary__val" dir="auto" id="summary-checkin">—</span>
               </div>
               <div class="booking-summary__row">
                 <span class="booking-summary__key" data-i18n="booking.form.checkout">Check-out</span>
-                <span class="booking-summary__val" id="summary-checkout">—</span>
+                <span class="booking-summary__val" dir="auto" id="summary-checkout">—</span>
               </div>
               <div class="booking-summary__row">
-                <span class="booking-summary__key">Guests</span>
-                <span class="booking-summary__val" id="summary-guests">—</span>
+                <span data-i18n="booking.summary.guests" class="booking-summary__key">Guests</span>
+                <span class="booking-summary__val" dir="auto" id="summary-guests">—</span>
               </div>
               <div class="booking-summary__row">
-                <span class="booking-summary__key">Name</span>
-                <span class="booking-summary__val" id="summary-name">—</span>
+                <span data-i18n="booking.summary.name" class="booking-summary__key">Name</span>
+                <span class="booking-summary__val" dir="auto" id="summary-name">—</span>
               </div>
               <div class="booking-summary__row booking-summary__row--total">
-                <span class="booking-summary__key">Estimated Total</span>
-                <span class="booking-summary__val" id="summary-total">—</span>
+                <span data-i18n="booking.form.price" class="booking-summary__key">Estimated Total</span>
+                <span class="booking-summary__val" dir="auto" id="summary-total">—</span>
               </div>
             </div>
 
             <p class="booking-note">
               <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              Clicking the button below will open WhatsApp with all your details pre-filled. The camp owner will reply to confirm your booking.
+              <span data-i18n="booking.note">Clicking the button below will open WhatsApp with all your details pre-filled. The camp owner will reply to confirm your booking.</span>
             </p>
 
             <div class="booking-panel__actions">
               <button type="button" class="btn btn--outline" id="step3-back">
                 <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-                Back
+                <span data-i18n="booking.back">Back</span>
               </button>
               <button type="submit" id="booking-submit" class="btn btn--whatsapp btn--lg">
                 <svg viewBox="0 0 24 24" fill="white" width="20" height="20" aria-hidden="true">
@@ -821,7 +821,7 @@
     <div class="container">
 
       <div class="section__header animate-on-scroll">
-        <span class="section__eyebrow">Getting Here</span>
+        <span data-i18n="location.eyebrow" class="section__eyebrow">Getting Here</span>
         <h2 id="location-title" data-i18n="location.title">Find Us</h2>
       </div>
 
@@ -845,7 +845,7 @@
           <div class="location__detail">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <div>
-              <strong>Address</strong>
+              <strong data-i18n="location.addressLabel">Address</strong>
               <span data-i18n="location.address">Tembaine Dunes, Douz, Kebili Governorate, Southern Tunisia</span>
             </div>
           </div>
@@ -853,7 +853,7 @@
           <div class="location__detail">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <div>
-              <strong>WhatsApp</strong>
+              <strong data-i18n="contact.whatsappLabel">WhatsApp</strong>
               <a href="https://wa.me/21693290920" style="color:inherit;">+216 93 290 920</a>
             </div>
           </div>
@@ -861,7 +861,7 @@
           <div class="location__detail">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <div>
-              <strong>Getting here</strong>
+              <strong data-i18n="location.gettingHere">Getting here</strong>
               <span data-i18n="location.desc">
                 Approximately 30 km northeast of Douz. Follow the road toward Ksar Ghilane.
                 Transfers can be arranged on request.
@@ -913,8 +913,8 @@
 
         <!-- Column 2: Navigation -->
         <div>
-          <p class="footer__col-title">Navigation</p>
-          <nav class="footer__nav" aria-label="Footer navigation">
+          <p data-i18n="footer.navigation" class="footer__col-title">Navigation</p>
+          <nav class="footer__nav" aria-label="Footer navigation" data-i18n-aria-label="aria.footerNav">
             <a href="#about"         class="footer__link" data-i18n="nav.about">About</a>
             <a href="#accommodation" class="footer__link" data-i18n="nav.accommodation">Accommodation</a>
             <a href="#activities"    class="footer__link" data-i18n="nav.activities">Activities</a>
@@ -926,14 +926,14 @@
 
         <!-- Column 3: Contact -->
         <div>
-          <p class="footer__col-title">Contact</p>
+          <p data-i18n="footer.contactTitle" class="footer__col-title">Contact</p>
           <a href="https://wa.me/21693290920" class="footer__contact-item" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             +216 93 290 920
           </a>
           <div class="footer__contact-item">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Tembaine, Douz, Kebili, Tunisia
+            <span data-i18n="footer.address">Tembaine, Douz, Kebili, Tunisia</span>
           </div>
         </div>
 
@@ -958,11 +958,11 @@
           <strong class="chatbot__title" id="chatbot-title">Sahara Camp</strong>
           <span class="chatbot__subtitle" id="chatbot-subtitle">Ask us anything</span>
         </div>
-        <button class="chatbot__close" type="button" aria-label="Close chat" onclick="document.getElementById('chatbot-widget').classList.remove('chatbot--open')">×</button>
+        <button class="chatbot__close" type="button" aria-label="Close chat" data-i18n-aria-label="aria.closeChat" onclick="document.getElementById('chatbot-widget').classList.remove('chatbot--open')">×</button>
       </div>
       <div class="chatbot__body" id="chatbot-body"></div>
     </div>
-    <button id="chatbot-toggle" class="chatbot-toggle" type="button" aria-label="Open chat" aria-expanded="false"
+    <button id="chatbot-toggle" class="chatbot-toggle" type="button" aria-label="Open chat" data-i18n-aria-label="aria.openChat" aria-expanded="false"
       onclick="var w=document.getElementById('chatbot-widget'); w.classList.toggle('chatbot--open'); this.setAttribute('aria-expanded', w.classList.contains('chatbot--open'));">
       <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
         <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
@@ -976,16 +976,16 @@
        ============================================================ -->
 
   <!-- Image config — load first so applyImages() can run on DOMContentLoaded -->
-  <script src="js/images.js"></script>
+  <script src="js/images.js?v=2"></script>
 
   <!-- Litepicker -->
-  <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/litepicker@2.0.12/dist/litepicker.js"></script>
 
   <!-- Our scripts (order matters) -->
-  <script src="js/translations.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/booking.js"></script>
-  <script src="js/chatbot.js"></script>
+  <script src="js/translations.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
+  <script src="js/booking.js?v=2"></script>
+  <script src="js/chatbot.js?v=2"></script>
 
   <!-- Footer year -->
   <script>

@@ -12,6 +12,7 @@ window.TRANSLATIONS = {
       language: "Language",
     },
     hero: {
+      place: "Tembaine · Douz · Tunisia",
       tagline: "Where the Sahara Speaks",
       subtitle:
         "Discover silence, stars, and timeless Berber hospitality in the golden dunes of Tembaine.",
@@ -19,6 +20,10 @@ window.TRANSLATIONS = {
       scroll: "Scroll to explore",
     },
     about: {
+      eyebrow: "Our Story",
+      stat1: "Years of hospitality",
+      stat2: "Guest reviews",
+      stat3: "Stars overhead",
       title: "About Sahara Camp",
       p1: "Nestled among the rolling dunes of Tembaine, near Douz in the Kebili Governorate of southern Tunisia, Sahara Camp offers an authentic escape into the heart of the Sahara. Here, the rhythm of the desert sets the pace: golden sunrises, endless horizons, and nights illuminated by a canopy of stars.",
       p2: "For generations, our family has welcomed travelers from across the world with the warmth and generosity of Tuareg and Berber tradition. Every guest is treated as a friend, every meal is shared with pride, and every stay becomes a story worth remembering.",
@@ -26,6 +31,9 @@ window.TRANSLATIONS = {
       badge2: "Family-run since generations",
     },
     accommodation: {
+      eyebrow: "Choose Your Shelter",
+      badgeAuthentic: "Most Authentic",
+      badgePopular: "Most Popular",
       title: "Your Desert Retreat",
       subtitle:
         "Sleep beneath the stars in comfort, surrounded by the quiet majesty of the dunes.",
@@ -52,6 +60,7 @@ window.TRANSLATIONS = {
       cta: "Book this tent",
     },
     activities: {
+      eyebrow: "Explore the Desert",
       title: "Desert Experiences",
       subtitle:
         "Explore the Sahara with guided activities designed for wonder, adventure, and connection.",
@@ -81,14 +90,80 @@ window.TRANSLATIONS = {
       },
     },
     gallery: {
+      eyebrow: "Visual Journey",
+      items: {
+        camp: {
+          caption: "Our Camp in the Desert",
+          alt: "Sahara Camp — desert camp at dusk with tents and lanterns",
+        },
+        camel: {
+          caption: "Camel Trekking Adventure",
+          alt: "Camel caravan crossing the Sahara at golden hour",
+        },
+        sunset: {
+          caption: "Camel riding at sunset",
+          alt: "Camel trekking through the Sahara desert at sunset",
+        },
+        dunes: {
+          caption: "Endless Dunes",
+          alt: "Vast Sahara desert dunes stretching to the horizon",
+        },
+        chott: {
+          caption: "Chatt Jerid",
+          alt: "Chatt Jerid scenery",
+        },
+        campfire: {
+          caption: "Campfires & Stars",
+          alt: "Dinner around a campfire under the starry desert sky",
+        },
+        oasis: {
+          caption: "Oasis scenes",
+          alt: "Oasis scenery with desert tents and palm trees",
+        },
+      },
       title: "Gallery",
       subtitle: "Moments of light, sand, and serenity captured at Sahara Camp.",
     },
     booking: {
+      eyebrow: "Reserve Your Night",
+      steps: {
+        dates: "Choose & Dates",
+        details: "Your Details",
+        confirm: "Confirm",
+      },
+      selectTent: "Select your accommodation",
+      selectDates: "Select your dates",
+      perNight: "/ night",
+      continue: "Continue to Details",
+      back: "Back",
+      review: "Review & Confirm",
+      reviewTitle: "Review your booking",
+      summary: {
+        guests: "Guests",
+        name: "Name",
+      },
+      note: "Clicking the button below will open WhatsApp with all your details pre-filled. The camp owner will reply to confirm your booking.",
+      another: "Make another booking",
+      listSep: ", ",
+      adultsCount: {
+        one: "{n} adult",
+        other: "{n} adults",
+      },
+      childrenCount: {
+        one: "{n} child",
+        other: "{n} children",
+      },
       title: "Book Your Stay",
       subtitle:
         "Choose your tent, select your dates, and send your request. We will confirm availability and your booking via WhatsApp.",
       form: {
+        namePlaceholder: "e.g. Sophie Müller",
+        emailPlaceholder: "sophie@example.com",
+        optional: "(optional)",
+        nights: {
+          one: "{n} night",
+          other: "{n} nights",
+        },
         tentType: "Tent Type",
         tentTypePlaceholder: "Select a tent",
         traditional: "Traditional Berber Tent",
@@ -104,7 +179,6 @@ window.TRANSLATIONS = {
         specialPlaceholder:
           "Dietary needs, celebration, preferred activities...",
         price: "Estimated Total",
-        nights: "nights",
         submit: "Request Booking via WhatsApp",
       },
       success: {
@@ -128,18 +202,51 @@ window.TRANSLATIONS = {
       },
     },
     location: {
+      eyebrow: "Getting Here",
+      addressLabel: "Address",
+      gettingHere: "Getting here",
       title: "Find Us",
       desc: "Sahara Camp is located in the Tembaine dunes, approximately 30 km northeast of Douz. From Douz, follow the road toward Ksar Ghilane and look for our camp markers at the edge of the erg. Transfers can be arranged on request.",
       address: "Tembaine Dunes, Douz, Kebili Governorate, Southern Tunisia",
     },
     contact: {
+      whatsappLabel: "WhatsApp",
       whatsapp: "Chat on WhatsApp",
       email: "Send an Email",
     },
     footer: {
+      navigation: "Navigation",
+      contactTitle: "Contact",
+      address: "Tembaine, Douz, Kebili, Tunisia",
       rights: "All rights reserved",
       made: "Made with ♥ in Tunisia",
       privacy: "Privacy Policy",
+    },
+    aria: {
+      mainNav: "Main navigation",
+      home: "Sahara Camp Home",
+      langSelector: "Language selector",
+      openMenu: "Open menu",
+      mobileNav: "Mobile navigation",
+      closeMenu: "Close menu",
+      hero: "Hero",
+      scrollDown: "Scroll down",
+      amenities: "Amenities",
+      gallery: "Photo gallery",
+      lightbox: "Image lightbox",
+      closeLightbox: "Close lightbox",
+      prevImage: "Previous image",
+      nextImage: "Next image",
+      bookingSteps: "Booking steps",
+      bookingForm: "Booking request form",
+      calendarLegend: "Calendar legend",
+      fewerAdults: "Fewer adults",
+      moreAdults: "More adults",
+      fewerChildren: "Fewer children",
+      moreChildren: "More children",
+      footerNav: "Footer navigation",
+      closeChat: "Close chat",
+      openChat: "Open chat",
     },
   },
   fr: {
@@ -153,6 +260,7 @@ window.TRANSLATIONS = {
       language: "Langue",
     },
     hero: {
+      place: "Tembaine · Douz · Tunisie",
       tagline: "Là où le Sahara parle",
       subtitle:
         "Découvrez le silence, les étoiles et l'hospitalité berbère intemporelle au cœur des dunes dorées de Tembaine.",
@@ -160,6 +268,10 @@ window.TRANSLATIONS = {
       scroll: "Défilez pour explorer",
     },
     about: {
+      eyebrow: "Notre histoire",
+      stat1: "Années d'hospitalité",
+      stat2: "Avis de nos hôtes",
+      stat3: "Étoiles au-dessus de vous",
       title: "À propos d'Sahara Camp",
       p1: "Niché au milieu des dunes ondulantes de Tembaine, près de Douz dans le gouvernorat de Kébili, au sud de la Tunisie, Sahara Camp offre une échappée authentique au cœur du Sahara. Ici, le rythme du désert dicte le tempo : levers de soleil dorés, horizons infinis et nuits éclairées d'un ciel constellé d'étoiles.",
       p2: "Depuis des générations, notre famille accueille les voyageurs du monde entier avec la chaleur et la générosité des traditions touarègues et berbères. Chaque invité est reçu comme un ami, chaque repas est partagé avec fierté, et chaque séjour devient une histoire mémorable.",
@@ -167,6 +279,9 @@ window.TRANSLATIONS = {
       badge2: "Géré par une famille depuis des générations",
     },
     accommodation: {
+      eyebrow: "Choisissez votre refuge",
+      badgeAuthentic: "Le plus authentique",
+      badgePopular: "Le plus populaire",
       title: "Votre retraite dans le désert",
       subtitle:
         "Dormez sous les étoiles dans le confort, entouré de la majesté silencieuse des dunes.",
@@ -193,6 +308,7 @@ window.TRANSLATIONS = {
       cta: "Réserver cette tente",
     },
     activities: {
+      eyebrow: "Explorez le désert",
       title: "Expériences dans le désert",
       subtitle:
         "Explorez le Sahara à travers des activités guidées conçues pour l'émerveillement, l'aventure et le partage.",
@@ -222,15 +338,81 @@ window.TRANSLATIONS = {
       },
     },
     gallery: {
+      eyebrow: "Un voyage en images",
+      items: {
+        camp: {
+          caption: "Notre camp dans le désert",
+          alt: "Sahara Camp — camp du désert au crépuscule avec tentes et lanternes",
+        },
+        camel: {
+          caption: "Aventure à dos de dromadaire",
+          alt: "Caravane de dromadaires traversant le Sahara à l'heure dorée",
+        },
+        sunset: {
+          caption: "Balade à dromadaire au coucher du soleil",
+          alt: "Randonnée à dromadaire dans le désert du Sahara au coucher du soleil",
+        },
+        dunes: {
+          caption: "Dunes sans fin",
+          alt: "Vastes dunes du Sahara s'étendant jusqu'à l'horizon",
+        },
+        chott: {
+          caption: "Chott el-Jérid",
+          alt: "Paysage du chott el-Jérid",
+        },
+        campfire: {
+          caption: "Feux de camp et étoiles",
+          alt: "Dîner autour d'un feu de camp sous le ciel étoilé du désert",
+        },
+        oasis: {
+          caption: "Scènes d'oasis",
+          alt: "Paysage d'oasis avec tentes du désert et palmiers",
+        },
+      },
       title: "Galerie",
       subtitle:
         "Des instants de lumière, de sable et de sérénité capturés à Sahara Camp.",
     },
     booking: {
+      eyebrow: "Réservez votre nuit",
+      steps: {
+        dates: "Tente et dates",
+        details: "Vos coordonnées",
+        confirm: "Confirmation",
+      },
+      selectTent: "Choisissez votre hébergement",
+      selectDates: "Choisissez vos dates",
+      perNight: "/ nuit",
+      continue: "Passer aux détails",
+      back: "Retour",
+      review: "Vérifier et confirmer",
+      reviewTitle: "Vérifiez votre réservation",
+      summary: {
+        guests: "Voyageurs",
+        name: "Nom",
+      },
+      note: "En cliquant sur le bouton ci-dessous, WhatsApp s'ouvrira avec tous vos détails préremplis. Le propriétaire du camp vous répondra pour confirmer votre réservation.",
+      another: "Faire une autre réservation",
+      listSep: ", ",
+      adultsCount: {
+        one: "{n} adulte",
+        other: "{n} adultes",
+      },
+      childrenCount: {
+        one: "{n} enfant",
+        other: "{n} enfants",
+      },
       title: "Réservez votre séjour",
       subtitle:
         "Choisissez votre tente, sélectionnez vos dates et envoyez votre demande. Nous confirmerons les disponibilités et votre réservation par WhatsApp.",
       form: {
+        namePlaceholder: "p. ex. Sophie Müller",
+        emailPlaceholder: "sophie@example.com",
+        optional: "(facultatif)",
+        nights: {
+          one: "{n} nuit",
+          other: "{n} nuits",
+        },
         tentType: "Type de tente",
         tentTypePlaceholder: "Sélectionnez une tente",
         traditional: "Tente berbère traditionnelle",
@@ -246,7 +428,6 @@ window.TRANSLATIONS = {
         specialPlaceholder:
           "Régime alimentaire, célébration, activités préférées...",
         price: "Total estimé",
-        nights: "nuits",
         submit: "Demander la réservation via WhatsApp",
       },
       success: {
@@ -270,19 +451,52 @@ window.TRANSLATIONS = {
       },
     },
     location: {
+      eyebrow: "Comment venir",
+      addressLabel: "Adresse",
+      gettingHere: "Accès",
       title: "Nous trouver",
       desc: "Sahara Camp se situe dans les dunes de Tembaine, à environ 30 km au nord-est de Douz. Depuis Douz, suivez la route vers Ksar Ghilane et repérez nos panneaux à l'orée de l'erg. Des transferts peuvent être organisés sur demande.",
       address:
         "Dunes de Tembaine, Douz, Gouvernorat de Kébili, Sud de la Tunisie",
     },
     contact: {
+      whatsappLabel: "WhatsApp",
       whatsapp: "Discuter sur WhatsApp",
       email: "Envoyer un e-mail",
     },
     footer: {
+      navigation: "Navigation",
+      contactTitle: "Contact",
+      address: "Tembaine, Douz, Kébili, Tunisie",
       rights: "Tous droits réservés",
       made: "Fait avec ♥ en Tunisie",
       privacy: "Politique de confidentialité",
+    },
+    aria: {
+      mainNav: "Navigation principale",
+      home: "Sahara Camp, accueil",
+      langSelector: "Choix de la langue",
+      openMenu: "Ouvrir le menu",
+      mobileNav: "Navigation mobile",
+      closeMenu: "Fermer le menu",
+      hero: "Section d'accueil",
+      scrollDown: "Défiler vers le bas",
+      amenities: "Équipements",
+      gallery: "Galerie photo",
+      lightbox: "Visionneuse d'images",
+      closeLightbox: "Fermer la visionneuse",
+      prevImage: "Image précédente",
+      nextImage: "Image suivante",
+      bookingSteps: "Étapes de la réservation",
+      bookingForm: "Formulaire de demande de réservation",
+      calendarLegend: "Légende du calendrier",
+      fewerAdults: "Moins d'adultes",
+      moreAdults: "Plus d'adultes",
+      fewerChildren: "Moins d'enfants",
+      moreChildren: "Plus d'enfants",
+      footerNav: "Navigation du pied de page",
+      closeChat: "Fermer le chat",
+      openChat: "Ouvrir le chat",
     },
   },
   de: {
@@ -296,6 +510,7 @@ window.TRANSLATIONS = {
       language: "Sprache",
     },
     hero: {
+      place: "Tembaine · Douz · Tunesien",
       tagline: "Wo die Sahara spricht",
       subtitle:
         "Entdecken Sie Stille, Sterne und zeitlose Berberhospitalität in den goldenen Dünen von Tembaine.",
@@ -303,6 +518,10 @@ window.TRANSLATIONS = {
       scroll: "Scrollen, um zu entdecken",
     },
     about: {
+      eyebrow: "Unsere Geschichte",
+      stat1: "Jahre Gastfreundschaft",
+      stat2: "Gästebewertungen",
+      stat3: "Sterne über Ihnen",
       title: "Über Sahara Camp",
       p1: "Eingebettet zwischen den sanften Dünen von Tembaine, nahe Douz im Gouvernement Kebili im Süden Tunesiens, bietet das Sahara Camp einen authentischen Rückzugsort im Herzen der Sahara. Hier bestimmt der Rhythmus der Wüste das Tempo: goldene Sonnenaufgänge, endlose Horizonte und Nächte, die von einem Sternenhimmel erleuchtet werden.",
       p2: "Seit Generationen empfängt unsere Familie Reisende aus aller Welt mit der Wärme und Großzügigkeit der tuaregischen und berberischen Tradition. Jeder Gast wird wie ein Freund behandelt, jede Mahlzeit wird mit Stolz geteilt, und jeder Aufenthalt wird zu einer Geschichte, die man gerne erzählt.",
@@ -310,6 +529,9 @@ window.TRANSLATIONS = {
       badge2: "Seit Generationen familiengeführt",
     },
     accommodation: {
+      eyebrow: "Wählen Sie Ihr Quartier",
+      badgeAuthentic: "Am authentischsten",
+      badgePopular: "Am beliebtesten",
       title: "Ihre Wüstenoase",
       subtitle:
         "Schlafen Sie unter den Sternen in Komfort, umgeben von der stillen Majestät der Dünen.",
@@ -336,6 +558,7 @@ window.TRANSLATIONS = {
       cta: "Dieses Zelt buchen",
     },
     activities: {
+      eyebrow: "Die Wüste erkunden",
       title: "Wüstenerlebnisse",
       subtitle:
         "Erkunden Sie die Sahara mit geführten Aktivitäten, die auf Staunen, Abenteuer und Begegnung ausgelegt sind.",
@@ -365,15 +588,81 @@ window.TRANSLATIONS = {
       },
     },
     gallery: {
+      eyebrow: "Eine Bilderreise",
+      items: {
+        camp: {
+          caption: "Unser Camp in der Wüste",
+          alt: "Sahara Camp — Wüstencamp in der Dämmerung mit Zelten und Laternen",
+        },
+        camel: {
+          caption: "Kamelritt-Abenteuer",
+          alt: "Kamelkarawane durchquert die Sahara zur goldenen Stunde",
+        },
+        sunset: {
+          caption: "Kamelritt bei Sonnenuntergang",
+          alt: "Kamelritt durch die Sahara bei Sonnenuntergang",
+        },
+        dunes: {
+          caption: "Endlose Dünen",
+          alt: "Weite Dünen der Sahara bis zum Horizont",
+        },
+        chott: {
+          caption: "Schott el-Dscherid",
+          alt: "Landschaft am Schott el-Dscherid",
+        },
+        campfire: {
+          caption: "Lagerfeuer und Sterne",
+          alt: "Abendessen am Lagerfeuer unter dem Sternenhimmel der Wüste",
+        },
+        oasis: {
+          caption: "Oasenszenen",
+          alt: "Oasenlandschaft mit Wüstenzelten und Palmen",
+        },
+      },
       title: "Galerie",
       subtitle:
         "Momente aus Licht, Sand und Gelassenheit, festgehalten im Sahara Camp.",
     },
     booking: {
+      eyebrow: "Reservieren Sie Ihre Nacht",
+      steps: {
+        dates: "Zelt & Datum",
+        details: "Ihre Angaben",
+        confirm: "Bestätigen",
+      },
+      selectTent: "Wählen Sie Ihre Unterkunft",
+      selectDates: "Wählen Sie Ihre Reisedaten",
+      perNight: "/ Nacht",
+      continue: "Weiter zu den Angaben",
+      back: "Zurück",
+      review: "Prüfen & bestätigen",
+      reviewTitle: "Prüfen Sie Ihre Buchung",
+      summary: {
+        guests: "Gäste",
+        name: "Name",
+      },
+      note: "Mit einem Klick auf die Schaltfläche unten öffnet sich WhatsApp mit allen vorausgefüllten Angaben. Der Campbetreiber meldet sich bei Ihnen, um Ihre Buchung zu bestätigen.",
+      another: "Weitere Buchung vornehmen",
+      listSep: ", ",
+      adultsCount: {
+        one: "{n} Erwachsener",
+        other: "{n} Erwachsene",
+      },
+      childrenCount: {
+        one: "{n} Kind",
+        other: "{n} Kinder",
+      },
       title: "Ihren Aufenthalt buchen",
       subtitle:
         "Wählen Sie Ihr Zelt, Ihre Daten und senden Sie uns Ihre Anfrage. Wir bestätigen Verfügbarkeit und Ihre Buchung per WhatsApp.",
       form: {
+        namePlaceholder: "z. B. Sophie Müller",
+        emailPlaceholder: "sophie@example.com",
+        optional: "(freiwillig)",
+        nights: {
+          one: "{n} Nacht",
+          other: "{n} Nächte",
+        },
         tentType: "Zelttyp",
         tentTypePlaceholder: "Wählen Sie ein Zelt",
         traditional: "Traditionelles Berberzelt",
@@ -389,7 +678,6 @@ window.TRANSLATIONS = {
         specialPlaceholder:
           "Ernährungsbedürfnisse, Feier, bevorzugte Aktivitäten...",
         price: "Geschätzte Gesamtkosten",
-        nights: "Nächte",
         submit: "Buchungsanfrage via WhatsApp",
       },
       success: {
@@ -413,18 +701,51 @@ window.TRANSLATIONS = {
       },
     },
     location: {
+      eyebrow: "Anreise",
+      addressLabel: "Adresse",
+      gettingHere: "Anfahrt",
       title: "So finden Sie uns",
       desc: "Das Sahara Camp liegt in den Dünen von Tembaine, etwa 30 km nordöstlich von Douz. Von Douz aus folgen Sie der Straße Richtung Ksar Ghilane und halten Sie nach unseren Schildern am Rand des Ergs Ausschau. Transfers können auf Anfrage organisiert werden.",
       address: "Dünen von Tembaine, Douz, Gouvernement Kebili, Süd-Tunesien",
     },
     contact: {
+      whatsappLabel: "WhatsApp",
       whatsapp: "Auf WhatsApp chatten",
       email: "E-Mail senden",
     },
     footer: {
+      navigation: "Navigation",
+      contactTitle: "Kontakt",
+      address: "Tembaine, Douz, Kebili, Tunesien",
       rights: "Alle Rechte vorbehalten",
       made: "Mit ♥ in Tunesien gemacht",
       privacy: "Datenschutzrichtlinie",
+    },
+    aria: {
+      mainNav: "Hauptnavigation",
+      home: "Sahara Camp Startseite",
+      langSelector: "Sprachauswahl",
+      openMenu: "Menü öffnen",
+      mobileNav: "Mobile Navigation",
+      closeMenu: "Menü schließen",
+      hero: "Startbereich",
+      scrollDown: "Nach unten scrollen",
+      amenities: "Ausstattung",
+      gallery: "Fotogalerie",
+      lightbox: "Bildanzeige",
+      closeLightbox: "Bildanzeige schließen",
+      prevImage: "Vorheriges Bild",
+      nextImage: "Nächstes Bild",
+      bookingSteps: "Buchungsschritte",
+      bookingForm: "Formular für die Buchungsanfrage",
+      calendarLegend: "Kalenderlegende",
+      fewerAdults: "Weniger Erwachsene",
+      moreAdults: "Mehr Erwachsene",
+      fewerChildren: "Weniger Kinder",
+      moreChildren: "Mehr Kinder",
+      footerNav: "Navigation im Seitenfuß",
+      closeChat: "Chat schließen",
+      openChat: "Chat öffnen",
     },
   },
   ru: {
@@ -438,6 +759,7 @@ window.TRANSLATIONS = {
       language: "Язык",
     },
     hero: {
+      place: "Тембайн · Дуз · Тунис",
       tagline: "Где говорит Сахара",
       subtitle:
         "Откройте для себя тишину, звёзды и вневременное берберское гостеприимство среди золотых дюн Тембайна.",
@@ -445,6 +767,10 @@ window.TRANSLATIONS = {
       scroll: "Прокрутите, чтобы исследовать",
     },
     about: {
+      eyebrow: "Наша история",
+      stat1: "Лет гостеприимства",
+      stat2: "Отзывы гостей",
+      stat3: "Звёзд над головой",
       title: "О лагере Абдельмула",
       p1: "Уютно расположившись среди плавных дюн Тембайна, недалеко от Дуза в вилайете Кебили на юге Туниса, лагерь Абдельмула предлагает аутентичное убежище в самом сердце Сахары. Здесь ритм пустыни задаёт темп: золотые рассветы, бескрайние горизонты и ночи, освещённые звёздным небом.",
       p2: "Наша семья на протяжении поколений принимает путешественников со всего мира с теплотой и щедростью туарегских и берберских традиций. Каждый гость — друг, каждый приём пищи — повод для гордости, а каждое пребывание становится историей, достойной воспоминаний.",
@@ -452,6 +778,9 @@ window.TRANSLATIONS = {
       badge2: "Семейный бизнес на протяжении поколений",
     },
     accommodation: {
+      eyebrow: "Выберите своё убежище",
+      badgeAuthentic: "Самая аутентичная",
+      badgePopular: "Самая популярная",
       title: "Ваш пустынный уголок",
       subtitle: "Спите под звёздами в комфорте, окружённые тихим величием дюн.",
       traditional: {
@@ -477,6 +806,7 @@ window.TRANSLATIONS = {
       cta: "Забронировать эту палатку",
     },
     activities: {
+      eyebrow: "Исследуйте пустыню",
       title: "Пустынные впечатления",
       subtitle:
         "Исследуйте Сахару вместе с нашими гидами в рамках удивительных, приключенческих и душевных активностей.",
@@ -506,15 +836,87 @@ window.TRANSLATIONS = {
       },
     },
     gallery: {
+      eyebrow: "Путешествие в кадрах",
+      items: {
+        camp: {
+          caption: "Наш лагерь в пустыне",
+          alt: "Sahara Camp — пустынный лагерь в сумерках с палатками и фонарями",
+        },
+        camel: {
+          caption: "Приключение на верблюдах",
+          alt: "Верблюжий караван пересекает Сахару в золотой час",
+        },
+        sunset: {
+          caption: "Верблюды на закате",
+          alt: "Прогулка на верблюдах по пустыне Сахара на закате",
+        },
+        dunes: {
+          caption: "Бескрайние дюны",
+          alt: "Огромные дюны Сахары до самого горизонта",
+        },
+        chott: {
+          caption: "Шотт-эль-Джерид",
+          alt: "Пейзаж соляного озера Шотт-эль-Джерид",
+        },
+        campfire: {
+          caption: "Костры и звёзды",
+          alt: "Ужин у костра под звёздным небом пустыни",
+        },
+        oasis: {
+          caption: "Виды оазиса",
+          alt: "Пейзаж оазиса с пустынными палатками и пальмами",
+        },
+      },
       title: "Галерея",
       subtitle:
         "Моменты света, песка и безмятежности, запечатлённые в лагере Абдельмула.",
     },
     booking: {
+      eyebrow: "Забронируйте свою ночь",
+      steps: {
+        dates: "Палатка и даты",
+        details: "Ваши данные",
+        confirm: "Подтверждение",
+      },
+      selectTent: "Выберите размещение",
+      selectDates: "Выберите даты",
+      perNight: "/ ночь",
+      continue: "Перейти к данным",
+      back: "Назад",
+      review: "Проверить и подтвердить",
+      reviewTitle: "Проверьте бронирование",
+      summary: {
+        guests: "Гости",
+        name: "Имя",
+      },
+      note: "После нажатия кнопки ниже откроется WhatsApp с уже заполненными данными. Владелец лагеря ответит вам и подтвердит бронирование.",
+      another: "Сделать ещё одно бронирование",
+      listSep: ", ",
+      adultsCount: {
+        one: "{n} взрослый",
+        few: "{n} взрослых",
+        many: "{n} взрослых",
+        other: "{n} взрослого",
+      },
+      childrenCount: {
+        one: "{n} ребёнок",
+        few: "{n} ребёнка",
+        many: "{n} детей",
+        other: "{n} ребёнка",
+      },
       title: "Забронировать проживание",
       subtitle:
         "Выберите палатку, укажите даты и отправьте запрос. Мы подтвердим наличие мест и ваше бронирование через WhatsApp.",
       form: {
+        namePlaceholder: "напр. София Мюллер",
+        emailPlaceholder: "sophie@example.com",
+        optional: "(необязательно)",
+        nights: {
+          one: "{n} ночь",
+          few: "{n} ночи",
+          many: "{n} ночей",
+          other: "{n} ночи",
+        },
         tentType: "Тип палатки",
         tentTypePlaceholder: "Выберите палатку",
         traditional: "Традиционная берберская палатка",
@@ -530,7 +932,6 @@ window.TRANSLATIONS = {
         specialPlaceholder:
           "Особенности питания, праздник, предпочтительные активности...",
         price: "Ориентировочная стоимость",
-        nights: "ночей",
         submit: "Отправить запрос через WhatsApp",
       },
       success: {
@@ -554,18 +955,51 @@ window.TRANSLATIONS = {
       },
     },
     location: {
+      eyebrow: "Как добраться",
+      addressLabel: "Адрес",
+      gettingHere: "Проезд",
       title: "Как нас найти",
       desc: "Лагерь Абдельмула находится в дюнах Тембайна, примерно в 30 км к северо-востоку от Дуза. Из Дуза двигайтесь по дороге в сторону Ксар-Гилан и следите за нашими указателями на краю эрга. Трансферы можно организовать по запросу.",
       address: "Дюны Тембайна, Дуз, Вилайет Кебили, Южный Тунис",
     },
     contact: {
+      whatsappLabel: "WhatsApp",
       whatsapp: "Написать в WhatsApp",
       email: "Отправить письмо",
     },
     footer: {
+      navigation: "Навигация",
+      contactTitle: "Контакты",
+      address: "Тембайн, Дуз, Кебили, Тунис",
       rights: "Все права защищены",
       made: "Сделано с ♥ в Тунисе",
       privacy: "Политика конфиденциальности",
+    },
+    aria: {
+      mainNav: "Главная навигация",
+      home: "Sahara Camp — на главную",
+      langSelector: "Выбор языка",
+      openMenu: "Открыть меню",
+      mobileNav: "Мобильная навигация",
+      closeMenu: "Закрыть меню",
+      hero: "Главный экран",
+      scrollDown: "Прокрутить вниз",
+      amenities: "Удобства",
+      gallery: "Фотогалерея",
+      lightbox: "Просмотр изображений",
+      closeLightbox: "Закрыть просмотр",
+      prevImage: "Предыдущее изображение",
+      nextImage: "Следующее изображение",
+      bookingSteps: "Шаги бронирования",
+      bookingForm: "Форма запроса на бронирование",
+      calendarLegend: "Обозначения календаря",
+      fewerAdults: "Меньше взрослых",
+      moreAdults: "Больше взрослых",
+      fewerChildren: "Меньше детей",
+      moreChildren: "Больше детей",
+      footerNav: "Навигация в нижней части страницы",
+      closeChat: "Закрыть чат",
+      openChat: "Открыть чат",
     },
   },
   ar: {
@@ -579,6 +1013,7 @@ window.TRANSLATIONS = {
       language: "اللغة",
     },
     hero: {
+      place: "تمبين · دوز · تونس",
       tagline: "حيث يتكلم الصحراء",
       subtitle:
         "اكتشفوا السكون والنجوم والضيافة البربرية الخالدة بين كثبان تمبين الذهبية.",
@@ -586,6 +1021,10 @@ window.TRANSLATIONS = {
       scroll: "مرر لاستكشاف المزيد",
     },
     about: {
+      eyebrow: "قصتنا",
+      stat1: "سنة من الضيافة",
+      stat2: "تقييمات الضيوف",
+      stat3: "نجوم فوق رؤوسكم",
       title: "عن مخيم الصحراء",
       p1: "يقع مخيم الصحراء بين كثبان تمبين المتموجة، بالقرب من دوز في ولاية قبلي جنوب تونس، في قلب الصحراء، ليقدّم لكم ملاذًا أصيلًا وسط السهول الرملية الشاسعة. هنا، يحدّد إيقاع الصحراء وتيرة الحياة: شروق ذهبي، آفاق بلا نهاية، وليالٍ مضاءة بسقف من النجوم.",
       p2: "ترحّب عائلتنا منذ أجيال بالمسافرين من كل أصقاع العالم بدفء وسخاء تقاليد الطوارق والبربر. كل ضيف هو صديق، وكل وجبة تُشارك بفخر، وكل إقامة تصبح قصة تستحقّ الذكرى.",
@@ -593,6 +1032,9 @@ window.TRANSLATIONS = {
       badge2: "إدارة عائلية عبر الأجيال",
     },
     accommodation: {
+      eyebrow: "اختاروا ملاذكم",
+      badgeAuthentic: "الأكثر أصالة",
+      badgePopular: "الأكثر طلبًا",
       title: "ملاذكم الصحراوي",
       subtitle: "ناموا تحت النجوم بكل راحة، محاطين بعظمة الكثبان الصامتة.",
       traditional: {
@@ -618,6 +1060,7 @@ window.TRANSLATIONS = {
       cta: "احجز هذه الخيمة",
     },
     activities: {
+      eyebrow: "اكتشفوا الصحراء",
       title: "تجارب صحراوية",
       subtitle:
         "استكشفوا الصحراء مع أنشطة مرشدة تُصمّم للدهشة والمغامرة والتواصل.",
@@ -647,14 +1090,92 @@ window.TRANSLATIONS = {
       },
     },
     gallery: {
+      eyebrow: "رحلة بالصور",
+      items: {
+        camp: {
+          caption: "مخيمنا في الصحراء",
+          alt: "مخيم الصحراء — مخيم صحراوي عند الغسق مع خيام وفوانيس",
+        },
+        camel: {
+          caption: "مغامرة على ظهر الجمال",
+          alt: "قافلة جمال تعبر الصحراء الكبرى في الساعة الذهبية",
+        },
+        sunset: {
+          caption: "ركوب الجمال عند الغروب",
+          alt: "رحلة على ظهر الجمال في الصحراء الكبرى عند غروب الشمس",
+        },
+        dunes: {
+          caption: "كثبان بلا نهاية",
+          alt: "كثبان الصحراء الكبرى الشاسعة الممتدة حتى الأفق",
+        },
+        chott: {
+          caption: "شط الجريد",
+          alt: "مشهد من شط الجريد",
+        },
+        campfire: {
+          caption: "نيران المخيم والنجوم",
+          alt: "عشاء حول نار المخيم تحت سماء الصحراء المرصعة بالنجوم",
+        },
+        oasis: {
+          caption: "مشاهد من الواحة",
+          alt: "مشهد واحة مع خيام صحراوية ونخيل",
+        },
+      },
       title: "معرض الصور",
       subtitle: "لحظات من النور والرمال والطمأنينة التُقطت في مخيم الصحراء.",
     },
     booking: {
+      eyebrow: "احجزوا ليلتكم",
+      steps: {
+        dates: "الخيمة والتواريخ",
+        details: "بياناتكم",
+        confirm: "التأكيد",
+      },
+      selectTent: "اختاروا إقامتكم",
+      selectDates: "اختاروا التواريخ",
+      perNight: "/ ليلة",
+      continue: "المتابعة إلى البيانات",
+      back: "رجوع",
+      review: "المراجعة والتأكيد",
+      reviewTitle: "راجعوا حجزكم",
+      summary: {
+        guests: "الضيوف",
+        name: "الاسم",
+      },
+      note: "عند الضغط على الزر أدناه سيُفتح واتساب مع جميع بياناتكم مُعبّأة مسبقًا. سيردّ عليكم صاحب المخيم لتأكيد حجزكم.",
+      another: "حجز آخر",
+      listSep: "، ",
+      adultsCount: {
+        zero: "{n} بالغ",
+        one: "بالغ واحد",
+        two: "بالغان",
+        few: "{n} بالغين",
+        many: "{n} بالغًا",
+        other: "{n} بالغ",
+      },
+      childrenCount: {
+        zero: "{n} طفل",
+        one: "طفل واحد",
+        two: "طفلان",
+        few: "{n} أطفال",
+        many: "{n} طفلًا",
+        other: "{n} طفل",
+      },
       title: "احجز إقامتك",
       subtitle:
         "اختر خيمتك، حدّد تواريخك، وأرسل طلبك. سنتواصل معك عبر واتساب للتأكد من التوفر وتأكيد الحجز.",
       form: {
+        namePlaceholder: "مثال: صوفي مولر",
+        emailPlaceholder: "sophie@example.com",
+        optional: "(اختياري)",
+        nights: {
+          zero: "{n} ليلة",
+          one: "ليلة واحدة",
+          two: "ليلتان",
+          few: "{n} ليالٍ",
+          many: "{n} ليلة",
+          other: "{n} ليلة",
+        },
         tentType: "نوع الخيمة",
         tentTypePlaceholder: "اختر خيمة",
         traditional: "خيمة بربرية تقليدية",
@@ -669,7 +1190,6 @@ window.TRANSLATIONS = {
         special: "طلبات خاصة",
         specialPlaceholder: "احتياجات غذائية، احتفال، أنشطة مفضّلة...",
         price: "الإجمالي التقديري",
-        nights: "ليالٍ",
         submit: "أرسل طلب الحجز عبر واتساب",
       },
       success: {
@@ -693,18 +1213,51 @@ window.TRANSLATIONS = {
       },
     },
     location: {
+      eyebrow: "كيف تصلون إلينا",
+      addressLabel: "العنوان",
+      gettingHere: "كيفية الوصول",
       title: "موقعنا",
       desc: "يقع مخيم الصحراء في كثبان تمبين، على بعد حوالي 30 كم شمال شرق دوز. من دوز، اتبع الطريق باتجاه قصر غيلان وابحث عن لافتاتنا على حافة العرق. يمكن ترتيب النقل عند الطلب.",
       address: "كثبان تمبين، دوز، ولاية قبلي، جنوب تونس",
     },
     contact: {
+      whatsappLabel: "واتساب",
       whatsapp: "الدردشة على واتساب",
       email: "إرسال بريد إلكتروني",
     },
     footer: {
+      navigation: "التنقل",
+      contactTitle: "اتصلوا بنا",
+      address: "تمبين، دوز، ولاية قبلي، تونس",
       rights: "جميع الحقوق محفوظة",
       made: "صُنع بـ ♥ في تونس",
       privacy: "سياسة الخصوصية",
+    },
+    aria: {
+      mainNav: "التنقل الرئيسي",
+      home: "مخيم الصحراء، الصفحة الرئيسية",
+      langSelector: "اختيار اللغة",
+      openMenu: "فتح القائمة",
+      mobileNav: "قائمة التنقل للجوال",
+      closeMenu: "إغلاق القائمة",
+      hero: "القسم الرئيسي",
+      scrollDown: "مرّر للأسفل",
+      amenities: "المرافق",
+      gallery: "معرض الصور",
+      lightbox: "عارض الصور",
+      closeLightbox: "إغلاق عارض الصور",
+      prevImage: "الصورة السابقة",
+      nextImage: "الصورة التالية",
+      bookingSteps: "خطوات الحجز",
+      bookingForm: "نموذج طلب الحجز",
+      calendarLegend: "دليل التقويم",
+      fewerAdults: "عدد أقل من البالغين",
+      moreAdults: "عدد أكثر من البالغين",
+      fewerChildren: "عدد أقل من الأطفال",
+      moreChildren: "عدد أكثر من الأطفال",
+      footerNav: "التنقل في أسفل الصفحة",
+      closeChat: "إغلاق الدردشة",
+      openChat: "فتح الدردشة",
     },
   },
 };

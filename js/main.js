@@ -35,6 +35,15 @@ const Lang = {
       const val = this.get(key);
       if (val && val !== key) el.setAttribute('placeholder', val);
     });
+
+    // aria-label and alt translations
+    [['data-i18n-aria-label', 'aria-label'], ['data-i18n-alt', 'alt']].forEach(([dataAttr, attr]) => {
+      document.querySelectorAll(`[${dataAttr}]`).forEach(el => {
+        const key = el.getAttribute(dataAttr);
+        const val = this.get(key);
+        if (val && val !== key) el.setAttribute(attr, val);
+      });
+    });
   },
 
   /** Set the active language, persist it, and re-render. */
@@ -53,6 +62,9 @@ const Lang = {
 
     this.applyAll();
     window.currentLang = lang;
+
+    // Let other modules (booking dates, nights, summary, calendar) re-render
+    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
   },
 
   init() {
@@ -403,11 +415,12 @@ const Images = {
           src="${item.thumb}"
           data-full="${item.full}"
           alt="${item.alt}"
+          ${item.altKey ? `data-i18n-alt="${item.altKey}"` : ''}
           loading="lazy"
           width="600"
         />
         <div class="gallery-item__overlay">
-          <span class="gallery-item__caption">${item.caption}</span>
+          <span class="gallery-item__caption" ${item.captionKey ? `data-i18n="${item.captionKey}"` : ''}>${item.caption}</span>
         </div>
       </figure>`).join('');
   },

@@ -11,11 +11,21 @@ const PRICES = { traditional: 45, glamping: 90 };
 const MAX_GUESTS = { traditional: 2, glamping: 4 };
 const WHATSAPP_NUMBER = "21693290920";
 
+// Intl locale per site language (dates, plural rules, calendar)
+const LOCALES = {
+  en: "en-GB",
+  fr: "fr-FR",
+  de: "de-DE",
+  ru: "ru-RU",
+  ar: "ar-TN",
+};
+
 /* =========================================
    State
    ========================================= */
 let picker = null;
 let currentStep = 1;
+let summaryShown = false;
 
 /* =========================================
    DOM refs (resolved after DOMContentLoaded)
@@ -69,14 +79,37 @@ function getTentValue() {
   const r = document.querySelector('input[name="tent-type-radio"]:checked');
   return r ? r.value : "";
 }
-function formatDisplay(dateStr) {
-  if (!dateStr) return "—";
-  const [y, m, d] = dateStr.split("-").map(Number);
-  return new Date(y, m - 1, d).toLocaleDateString("en-GB", {
+function pageLang() {
+  const l = window.currentLang || "en";
+  return LOCALES[l] ? l : "en";
+}
+
+/** Format a Date for display in the page language (empty value shows a dash). */
+function formatDisplay(date) {
+  if (!date) return "—";
+  if (typeof date === "string") date = parse(date);
+  return new Intl.DateTimeFormat(LOCALES[pageLang()], {
     day: "numeric",
     month: "short",
     year: "numeric",
-  });
+  }).format(date);
+}
+
+/** Translation key for `base` and the plural category of n; falls back to `${base}.other`. */
+function pluralKey(base, n) {
+  const key = `${base}.${new Intl.PluralRules(LOCALES[pageLang()]).select(n)}`;
+  return Lang.get(key) !== key ? key : `${base}.other`;
+}
+
+/** Translated "{n} night(s)"-style text for a count. */
+function countText(base, n) {
+  return Lang.get(pluralKey(base, n)).replace("{n}", n);
+}
+
+function tentLabelFor(tent) {
+  if (tent === "traditional") return Lang.get("booking.form.traditional");
+  if (tent === "glamping") return Lang.get("booking.form.glamping");
+  return "—";
 }
 
 /** Read a translated booking error string for the current language. */
@@ -215,25 +248,24 @@ function populateSummary() {
   const n = ci && co ? nights(ci, co) : 0;
   const total = tent ? PRICES[tent] * n : 0;
 
-  const tentLabel =
-    tent === "traditional"
-      ? "Traditional Berber Tent"
-      : tent === "glamping"
-        ? "Luxury Glamping Tent"
-        : "—";
+  summaryShown = true;
+  const tentLabel = tentLabelFor(tent);
+  const adultsStr = countText("booking.adultsCount", adults);
   const guestStr =
     children > 0
-      ? `${adults} adult${adults !== 1 ? "s" : ""}, ${children} child${children !== 1 ? "ren" : ""}`
-      : `${adults} adult${adults !== 1 ? "s" : ""}`;
+      ? `${adultsStr}${Lang.get("booking.listSep")}${countText("booking.childrenCount", children)}`
+      : adultsStr;
 
   if (els.summaryTent) els.summaryTent.textContent = tentLabel;
-  if (els.summaryCheckin) els.summaryCheckin.textContent = formatDisplay(ci);
-  if (els.summaryCheckout) els.summaryCheckout.textContent = formatDisplay(co);
+  if (els.summaryCheckin)
+    els.summaryCheckin.textContent = ci ? formatDisplay(ci) : "—";
+  if (els.summaryCheckout)
+    els.summaryCheckout.textContent = co ? formatDisplay(co) : "—";
   if (els.summaryGuests) els.summaryGuests.textContent = guestStr;
   if (els.summaryName) els.summaryName.textContent = name || "—";
   if (els.summaryTotal)
     els.summaryTotal.textContent =
-      total > 0 ? `€${total} (${n} night${n !== 1 ? "s" : ""})` : "—";
+      total > 0 ? `€${total} (${countText("booking.form.nights", n)})` : "—";
 }
 
 /* =========================================
@@ -251,7 +283,7 @@ function applyPickerDates(d1, d2) {
     const ciStr = fmt(ci);
     if (els.checkin) els.checkin.value = ciStr;
     const ciEl = document.getElementById("checkin-display");
-    if (ciEl) ciEl.textContent = formatDisplay(ciStr);
+    if (ciEl) ciEl.textContent = formatDisplay(ci);
   }
 
   if (ci && co && !isNaN(ci) && !isNaN(co)) {
@@ -259,12 +291,12 @@ function applyPickerDates(d1, d2) {
     const coStr = fmt(co);
     if (els.checkout) els.checkout.value = coStr;
     const coEl = document.getElementById("checkout-display");
-    if (coEl) coEl.textContent = formatDisplay(coStr);
+    if (coEl) coEl.textContent = formatDisplay(co);
 
     const n = nights(ciStr, coStr);
     const nightsEl = document.getElementById("display-nights");
     if (nightsEl) {
-      nightsEl.textContent = n > 0 ? `${n} night${n !== 1 ? "s" : ""}` : "";
+      nightsEl.textContent = n > 0 ? countText("booking.form.nights", n) : "";
       nightsEl.style.display = n > 0 ? "flex" : "none";
     }
 
@@ -274,6 +306,17 @@ function applyPickerDates(d1, d2) {
       errEl.classList.remove("visible");
     }
   }
+}
+
+/** Word-only night forms for Litepicker's tooltip (it prepends the number). */
+function tooltipTexts() {
+  const out = {};
+  ["zero", "one", "two", "few", "many", "other"].forEach((cat) => {
+    const key = `booking.form.nights.${cat}`;
+    const v = Lang.get(key);
+    if (v !== key) out[cat] = v.replace(/\{n\}\s*/, "");
+  });
+  return out;
 }
 
 function initCalendar() {
@@ -295,6 +338,8 @@ function initCalendar() {
     numberOfMonths: window.innerWidth < 640 ? 1 : 2,
     numberOfColumns: window.innerWidth < 640 ? 1 : 2,
     format: "YYYY-MM-DD",
+    lang: LOCALES[pageLang()],
+    tooltipText: tooltipTexts(),
     minDate: new Date(),
     onSelect(d1, d2) {
       applyPickerDates(d1, d2);
@@ -362,6 +407,7 @@ function handleSubmit(e) {
 
   const n = nights(ci, co);
   const total = tent ? PRICES[tent] * n : 0;
+  // The message goes to the camp owner, so it stays in English.
   const tentLabel =
     tent === "traditional" ? "Traditional Berber Tent" : "Luxury Glamping Tent";
 
@@ -387,6 +433,30 @@ function handleSubmit(e) {
   const card = document.getElementById("booking-card");
   if (card) card.style.display = "none";
   if (els.success) els.success.classList.add("visible");
+}
+
+/* =========================================
+   Language change — re-render everything that holds localised text
+   ========================================= */
+function onLangChange() {
+  if (!els.checkin) return;
+  const ci = els.checkin.value;
+  const co = els.checkout.value;
+
+  // Rebuild the calendar in the new language and restore the selection
+  initCalendar();
+  if (picker && ci && co) picker.setDateRange(parse(ci), parse(co));
+
+  const ciEl = document.getElementById("checkin-display");
+  const coEl = document.getElementById("checkout-display");
+  if (ciEl) ciEl.textContent = ci ? formatDisplay(ci) : "—";
+  if (coEl) coEl.textContent = co ? formatDisplay(co) : "—";
+  const nightsEl = document.getElementById("display-nights");
+  if (nightsEl && ci && co) {
+    const n = nights(ci, co);
+    nightsEl.textContent = n > 0 ? countText("booking.form.nights", n) : "";
+  }
+  if (summaryShown) populateSummary();
 }
 
 /* =========================================
@@ -425,6 +495,8 @@ function initBooking() {
 
   // Form submit (step 3 button)
   els.form?.addEventListener("submit", handleSubmit);
+
+  document.addEventListener("langchange", onLangChange);
 }
 
 document.addEventListener("DOMContentLoaded", initBooking);
