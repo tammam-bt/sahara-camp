@@ -24,6 +24,7 @@ const LOCALES = {
    State
    ========================================= */
 let picker = null;
+let pickerDummy = null;
 let currentStep = 1;
 let summaryShown = false;
 
@@ -326,9 +327,11 @@ function initCalendar() {
     picker = null;
   }
 
+  if (pickerDummy) pickerDummy.remove();
   const dummy = document.createElement("input");
   dummy.type = "hidden";
   document.body.appendChild(dummy);
+  pickerDummy = dummy;
 
   picker = new window.Litepicker({
     element: dummy,
@@ -443,18 +446,43 @@ function onLangChange() {
   const ci = els.checkin.value;
   const co = els.checkout.value;
 
-  // Rebuild the calendar in the new language and restore the selection
+  // Error messages were written in the old language: drop them
+  clearErrors();
+  hideGlobalError();
+
+  // Rebuild the calendar in the new language, keeping the month being viewed
+  const view =
+    picker && picker.calendars && picker.calendars[0]
+      ? picker.calendars[0].toJSDate()
+      : null;
   initCalendar();
-  if (picker && ci && co) picker.setDateRange(parse(ci), parse(co));
+  if (picker && ci && co) {
+    picker.setDateRange(parse(ci), parse(co));
+  } else {
+    // Only a check-in (or nothing) is selected: the rebuilt picker has no
+    // selection, so clear the dependent state to stay consistent.
+    if (els.checkin) els.checkin.value = "";
+    if (els.checkout) els.checkout.value = "";
+    if (picker && view) picker.gotoDate(view);
+  }
 
   const ciEl = document.getElementById("checkin-display");
   const coEl = document.getElementById("checkout-display");
-  if (ciEl) ciEl.textContent = ci ? formatDisplay(ci) : "—";
-  if (coEl) coEl.textContent = co ? formatDisplay(co) : "—";
   const nightsEl = document.getElementById("display-nights");
-  if (nightsEl && ci && co) {
-    const n = nights(ci, co);
-    nightsEl.textContent = n > 0 ? countText("booking.form.nights", n) : "";
+  if (ci && co) {
+    if (ciEl) ciEl.textContent = formatDisplay(ci);
+    if (coEl) coEl.textContent = formatDisplay(co);
+    if (nightsEl) {
+      const n = nights(ci, co);
+      nightsEl.textContent = n > 0 ? countText("booking.form.nights", n) : "";
+    }
+  } else {
+    if (ciEl) ciEl.textContent = "—";
+    if (coEl) coEl.textContent = "—";
+    if (nightsEl) {
+      nightsEl.textContent = "";
+      nightsEl.style.display = "none";
+    }
   }
   if (summaryShown) populateSummary();
 }
